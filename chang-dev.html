@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Chang-Sam — Corporate Solutions</title>
+<style>
+:root{--black:#262626;--paper:#f8f8fa;--white:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#000;color:var(--black);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.site{width:100%;max-width:1200px;margin:0 auto;background:var(--paper);padding:0 2.15%}
+.topspace{height:2.15vw;max-height:26px;background:var(--paper)}
+.panel{position:relative;overflow:hidden}
+.hero{height:446px;background:var(--black);color:#f7f7f7}
+.logo{position:absolute;left:13.6%;top:0;display:flex;align-items:flex-end;height:110px;font-size:18px;line-height:1;color:#eee;white-space:nowrap}
+.logo-symbol{width:21px;height:110px;background:#fff;color:#292929;display:flex;align-items:flex-end;justify-content:center;font-size:27px;padding-bottom:3px;margin-right:5px}
+.logo-type{padding-bottom:1px}
+.logo-type small{display:block;text-align:right;font-size:7px;line-height:1.5}
+.nav{position:absolute;right:13.1%;top:52px;width:120px;display:flex;flex-direction:column;align-items:flex-end;gap:4px;color:#707070;font-size:6px;line-height:1.25;letter-spacing:2px;text-align:right}
+.nav a{max-width:100%;transition:color .2s}
+.nav a:hover{color:#fff}
+.hero-title{position:absolute;right:13.1%;bottom:72px;width:49%;margin:0;color:#f8f8f8;font-size:40px;line-height:1.02;letter-spacing:-1.5px;font-weight:600;text-align:right}
+.scroll{position:absolute;left:13.6%;bottom:76px;color:#858585;font-size:7px;line-height:1.5}
+.scroll b{font-size:19px;font-weight:300;vertical-align:middle;margin-left:8px}
+.about{height:445px;background:#fff;display:grid;grid-template-columns:30.8% 69.2%}
+.photo{background-size:cover;background-repeat:no-repeat}
+.photo-coast{background-image:url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=90');background-position:47% center}
+.about-right{position:relative;padding:0 7.6%}
+.about-right .nav{top:51px;right:13.2%;color:#b5b5b5}
+.about-layout{position:absolute;left:9.8%;right:12%;top:151px;display:grid;grid-template-columns:1.16fr .84fr;column-gap:9%}
+.about-copy{font-size:13px;line-height:1.75;font-weight:600;margin:0 0 39px}
+.about-small{font-size:9px;line-height:1.85;color:#9a9a9a;font-weight:400;margin:0}
+.about-title{font-size:39px;line-height:1.02;letter-spacing:-1.5px;font-weight:600;text-align:right;margin:0}
+.difference{height:438px;background:var(--black);color:#f7f7f7;display:grid;grid-template-columns:69.2% 30.8%}
+.difference-left{position:relative}
+.difference-left .nav{top:66px;right:12%;color:#686868}
+.difference-copy{position:absolute;left:19.4%;top:171px;width:43%;font-size:9px;line-height:1.8;color:#aaa;margin:0}
+.difference-title{position:absolute;right:-25.8%;bottom:60px;width:76%;z-index:2;text-align:right;font-size:39px;line-height:1.02;letter-spacing:-1.4px;font-weight:600;margin:0;color:#f8f8f8}
+.photo-coast-two{background-image:url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=900&q=90');background-position:52% center}
+/* ===== SERVICES ===== */
+.services{height:445px;background:#fff;display:grid;grid-template-columns:30.8% 69.2%}
+.services-left{position:relative}
+.services-title{position:absolute;left:0;top:56%;width:100%;text-align:center;font-size:39px;line-height:1.02;letter-spacing:-1.5px;font-weight:600;margin:0}
+.services-right{position:relative;padding:0 7.6%}
+.services-right .nav{top:51px;right:13.2%;color:#b5b5b5}
+.services-layout{position:absolute;left:9.8%;right:12%;top:151px;display:grid;grid-template-columns:1fr 1fr;column-gap:9%}
+.services-list{list-style:none;margin:0;padding:0;font-size:13px;line-height:2.6;font-weight:600}
+.services-list li{border-bottom:1px solid #ececec;transition:padding-left .2s,color .2s}
+.services-list li:hover{padding-left:8px;color:#0a7b8a}
+.services-desc{font-size:9px;line-height:1.85;color:#9a9a9a;font-weight:400;margin:4px 0 0}
+/* ===== CONTACT ===== */
+.contact{height:500px;background:var(--black);color:#f7f7f7;display:grid;grid-template-columns:57% 43%}
+.contact-left{position:relative}
+.contact-left .nav{top:51px;left:13.6%;right:auto;align-items:flex-start;text-align:left;color:#686868}
+.contact-form{position:absolute;left:19.4%;top:151px;width:56%}
+.contact-form h2{font-size:11px;letter-spacing:3px;color:#8a8a8a;font-weight:400;margin:0 0 26px}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:7px;letter-spacing:2px;color:#7d7d7d;margin-bottom:8px}
+.field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid #4a4a4a;color:#f2f2f2;font-family:inherit;font-size:11px;padding:6px 0;outline:none;transition:border-color .2s}
+.field input:focus,.field textarea:focus{border-color:#f2f2f2}
+.field textarea{resize:none;height:56px}
+.contact-form button{background:#fff;color:#262626;border:none;font-family:inherit;font-size:8px;letter-spacing:2.5px;padding:12px 34px;cursor:pointer;transition:background .2s,color .2s}
+.contact-form button:hover{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px #fff}
+.contact-info{position:relative;border-left:1px solid #3a3a3a;padding:0 10%}
+.contact-info .contact-title{position:absolute;left:10%;right:10%;top:118px;text-align:left;font-size:39px;line-height:1.02;letter-spacing:-1.5px;font-weight:600;margin:0;color:#f8f8f8}
+.contact-details{position:absolute;left:10%;right:10%;top:205px;font-size:9px;line-height:2.1;color:#9a9a9a}
+.contact-details strong{display:block;color:#f2f2f2;font-size:10px;letter-spacing:1px;margin-bottom:6px;font-weight:600}
+.contact-details a:hover{color:#fff}
+/* ===== FOOTER ===== */
+.footer{background:#1d1d1d;color:#8a8a8a;position:relative;display:flex;align-items:stretch;justify-content:space-between;padding:26px 13.6% 0;height:100px}
+.bottomspace{height:min(2.15vw,26px);background:var(--paper)}
+.footer .f-logo{position:relative;display:flex;align-items:flex-start;color:#eee;font-size:13px;line-height:1}
+.footer .f-logo .logo-symbol{position:absolute;top:0;left:0;bottom:0;height:auto;width:15px;font-size:18px;align-items:flex-start;justify-content:center;padding-top:2px;padding-bottom:0;margin-right:5px}
+.footer .f-logo .logo-type{margin-left:22px}
+.footer .f-logo small{display:block;text-align:right;font-size:5px;line-height:1.5;color:#aaa}
+.footer .f-copy{font-size:7px;letter-spacing:1.5px;position:absolute;right:13.6%;bottom:22px}
+.footer .f-copy a{transition:color .2s}
+.footer .f-copy a:hover{color:#fff}
+.footer .f-nav{display:flex;gap:20px;font-size:7px;letter-spacing:2px;position:absolute;left:50%;transform:translateX(-50%);bottom:22px}
+.footer .f-nav a{transition:color .2s}
+.footer .f-nav a:hover{color:#fff}
+@media(min-width:1000px){
+ .hero{height:446px}
+ .about{height:445px}
+ .difference{height:438px}
+ .services{height:445px}
+ .contact{height:445px}
+}
+@media(max-width:650px){
+ .site{padding:0 2.15%}
+ .hero{height:clamp(380px,54vw,446px)}
+ .logo{left:13.6%;height:85px;font-size:clamp(12px,2.3vw,18px)}
+ .hero .logo-symbol{height:85px;width:19px;font-size:23px}
+ .nav{top:45px;right:8%;font-size:5px;letter-spacing:1.3px;width:100px}
+ .hero-title{right:8%;width:63%;font-size:clamp(29px,5vw,40px);bottom:17%}
+ .scroll{left:13.6%;bottom:17%}
+ .about{height:auto;min-height:445px;grid-template-columns:30.8% 69.2%}
+ .about-right{padding:0 6%}
+ .about-right .nav{top:39px;right:8%;font-size:4.5px;letter-spacing:1px;width:90px}
+ .about-layout{left:8%;right:8%;top:34%;grid-template-columns:1.15fr .85fr;column-gap:7%}
+ .about-copy{font-size:clamp(8px,1.55vw,13px);line-height:1.7;margin-bottom:23px}
+ .about-small{font-size:clamp(6px,1.05vw,9px);line-height:1.75}
+ .about-title{font-size:clamp(22px,4.7vw,39px)}
+ .difference{height:438px;grid-template-columns:69.2% 30.8%}
+ .difference-left .nav{top:52px;right:8%;font-size:4.5px;letter-spacing:1px;width:90px}
+ .difference-copy{left:19.4%;top:39%;width:48%;font-size:clamp(6px,1.1vw,9px);line-height:1.8}
+ .difference-title{right:-25.8%;bottom:14%;font-size:clamp(22px,4.7vw,39px)}
+ .services{height:auto;min-height:445px;grid-template-columns:30.8% 69.2%}
+ .services-title{font-size:clamp(22px,4.7vw,39px)}
+ .services-right{padding:0 6%}
+ .services-right .nav{top:39px;right:8%;font-size:4.5px;letter-spacing:1px;width:90px}
+ .services-layout{left:8%;right:8%;top:34%;column-gap:7%}
+ .services-list{font-size:clamp(8px,1.55vw,13px);line-height:2.4}
+ .services-desc{font-size:clamp(6px,1.05vw,9px)}
+ .contact{height:auto;min-height:445px;grid-template-columns:57% 43%}
+ .contact-left .nav{left:13.6%;font-size:4.5px;letter-spacing:1px;width:90px}
+ .contact-form{left:12%;top:27%;width:74%}
+ .contact-details{top:27%;font-size:clamp(6px,1.05vw,9px)}
+ .contact-details strong{font-size:clamp(7px,1.2vw,10px)}
+ .contact-info .contact-title{top:14%;font-size:clamp(22px,4.7vw,39px)}
+ .contact-details{top:27%}
+ .footer{flex-wrap:wrap;gap:12px;padding:22px 6% 0;height:84px}
+ .footer .f-copy{right:6%;bottom:16px}
+ .footer .f-nav{display:none}
+}
+@media(max-width:420px){
+ .hero{height:380px}
+ .hero-title{font-size:28px;width:70%}
+ .about{min-height:400px}
+ .about-layout{top:35%}
+ .about-copy{font-size:7px}
+ .about-small{font-size:5.5px}
+ .about-title{font-size:21px}
+ .difference{height:390px}
+ .difference-title{font-size:22px}
+ .services{min-height:400px}
+ .services-layout{top:35%}
+ .services-list{font-size:7px}
+ .services-desc{font-size:5.5px}
+ .services-title{font-size:21px}
+ .contact{min-height:480px}
+ .contact-form button{padding:10px 24px}
+ .contact-info .contact-title{font-size:21px}
+}
+</style>
+</head>
+<body>
+<main class="site">
+
+  <div class="topspace" aria-hidden="true"></div>
+
+  <section class="panel hero" id="home">
+    <div class="logo"><span class="logo-symbol">D</span><span class="logo-type">CHANG-DEV<small>corporate solutions</small></span></div>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#home">HOME</a><a href="#about">ABOUT US</a><a href="#difference">WHAT MAKES US DIFFERENT</a><a href="#services">OUR SERVICES</a><a href="#contact">CONTACT</a>
+    </nav>
+    <div class="scroll">Scroll<br>to explore <b>↓</b></div>
+    <h1 class="hero-title">A new breath for<br>your corporate<br>services</h1>
+  </section>
+
+  <section class="panel about" id="about">
+    <div class="photo photo-coast" role="img" aria-label="Turquoise water and rocky shoreline"></div>
+    <div class="about-right">
+      <nav class="nav" aria-label="About navigation">
+        <a href="#home">HOME</a><a href="#about">ABOUT US</a><a href="#difference">WHAT MAKES US DIFFERENT</a><a href="#services">OUR SERVICES</a><a href="#contact">CONTACT</a>
+      </nav>
+      <div class="about-layout">
+        <div>
+          <p class="about-copy">The operations started in 2018 but the principals of the business have over 15 years of experience in financial services, including 10 years regulatory experience.</p>
+          <p class="about-small">Having been in the industry for close to 15 years we have seen the evolution of the low quality of service provided by corporate service providers in Seychelles. Service providers were fond of only taking a hands-on approach to servicing their clients. Although some of them have been in business for over 25 years they still lacked a thorough understanding of the regulatory requirements in Seychelles.</p>
+        </div>
+        <h2 class="about-title">About<br>us</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel difference" id="difference">
+    <div class="difference-left">
+      <nav class="nav" aria-label="Difference navigation">
+        <a href="#home">HOME</a><a href="#about">ABOUT US</a><a href="#difference">WHAT MAKES US DIFFERENT</a><a href="#services">OUR SERVICES</a><a href="#contact">CONTACT</a>
+      </nav>
+      <p class="difference-copy">When people come to Chang-Sam Corporate Solutions, having dealt with other corporate service providers in Seychelles and beyond, they tell us that we are a breath of fresh air. Our practical knowledge, our approach to customer satisfaction and dedication to their cause is what they expect from firms like us, and that we stand out from the crowd, and ultimately that our customers know that they are in good hands and will have their backs.</p>
+      <h2 class="difference-title">What makes us<br>different?</h2>
+    </div>
+    <div class="photo photo-coast-two" role="img" aria-label="Clear turquoise sea along a rocky coast"></div>
+  </section>
+
+  <section class="panel services" id="services">
+    <div class="services-left">
+      <h2 class="services-title">Our<br>Services</h2>
+    </div>
+    <div class="services-right">
+      <nav class="nav" aria-label="Services navigation">
+        <a href="#home">HOME</a><a href="#about">ABOUT US</a><a href="#difference">WHAT MAKES US DIFFERENT</a><a href="#services">OUR SERVICES</a><a href="#contact">CONTACT</a>
+      </nav>
+      <div class="services-layout">
+        <ul class="services-list">
+          <li>Consultancy</li>
+          <li>Regulatory</li>
+          <li>Advisory</li>
+          <li>Corporate</li>
+          <li>Finance</li>
+          <li>Secretarial</li>
+        </ul>
+        <p class="services-desc">We provide a full range of corporate services tailored to your business needs. From company formation and administration to regulatory compliance, accounting and secretarial support — our team guides you through every step with hands-on expertise and a deep understanding of the Seychelles regulatory environment.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel contact" id="contact">
+    <div class="contact-left">
+      <nav class="nav" aria-label="Contact navigation">
+        <a href="#home">HOME</a><a href="#about">ABOUT US</a><a href="#difference">WHAT MAKES US DIFFERENT</a><a href="#services">OUR SERVICES</a><a href="#contact">CONTACT</a>
+      </nav>
+      <form class="contact-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='SENT ✓';">
+        <h2>ANY QUESTIONS?</h2>
+        <div class="field">
+          <label for="cf-name">NAME</label>
+          <input id="cf-name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="cf-email">EMAIL</label>
+          <input id="cf-email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="cf-msg">MESSAGE</label>
+          <textarea id="cf-msg" required></textarea>
+        </div>
+        <button type="submit">SEND MESSAGE</button>
+      </form>
+    </div>
+    <div class="contact-info">
+      <h2 class="contact-title">Contact</h2>
+      <div class="contact-details">
+        <strong>CHANG-DEV CORPORATE SOLUTIONS</strong>
+        Suite 5, Victoria House<br>
+        Victoria, Mahe, Seychelles<br><br>
+        <a href="tel:+2484290000">+248 429 00 00</a><br>
+        <a href="mailto:info@chang-dev.com">info@chang-dev.com</a><br><br>
+        Mon – Fri: 9:00 – 17:00 (GMT+4)
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="f-logo"><span class="logo-symbol">D</span><span class="logo-type">CHANG-DEV<small>corporate solutions</small></span></div>
+    <div class="f-copy">© 2026 Chang-Dev Corporate Solutions. All rights reserved.</div>
+    <nav class="f-nav" aria-label="Footer navigation">
+      <a href="#home">HOME</a><a href="#services">SERVICES</a><a href="#contact">CONTACT</a>
+    </nav>
+  </footer>
+
+  <div class="bottomspace" aria-hidden="true"></div>
+
+</main>
+</body>
+</html>

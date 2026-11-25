@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML TEMPLATE COLLECTION // 10 Production-Ready Demos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-base:#030304; --bg-card:#121215; --bg-hover:#18181c; --bg-muted:#1e1e24;
+      --border:#1f1f24; --border-strong:#3f3f46;
+      --text-primary:#ffffff; --text-secondary:#a1a1aa; --text-muted:#71717a;
+      --accent:#ffffff; --accent-inverse:#000000;
+    }
+    [data-theme="light"] {
+      --bg-base:#f4f4f5; --bg-card:#ffffff; --bg-hover:#f8f9fa; --bg-muted:#e4e4e7;
+      --border:#e4e4e7; --border-strong:#cbd5e1;
+      --text-primary:#09090b; --text-secondary:#52525b; --text-muted:#71717a;
+      --accent:#09090b; --accent-inverse:#ffffff;
+    }
+    *{box-sizing:border-box}
+    body{background:var(--bg-base);color:var(--text-primary);font-family:'Inter',sans-serif;transition:background .25s ease,color .25s ease}
+    .font-heading{font-family:'Outfit',sans-serif}
+    .mono{font-family:'JetBrains Mono',monospace}
+    .card{background:var(--bg-card);border:1px solid var(--border);transition:all .25s cubic-bezier(.16,1,.3,1)}
+    .card:hover{background:var(--bg-hover);border-color:var(--border-strong);transform:translateY(-4px);box-shadow:0 20px 40px -15px rgba(255,255,255,.08)}
+    [data-theme="light"] .card:hover{box-shadow:0 20px 35px -10px rgba(0,0,0,.12)}
+    .btn-primary{background:var(--accent);color:var(--accent-inverse);transition:all .2s ease}
+    .btn-primary:hover{opacity:.9;transform:translateY(-2px)}
+    .btn-secondary{background:var(--bg-base);border:1px solid var(--border);color:var(--text-primary);transition:all .2s ease}
+    .btn-secondary:hover{border-color:var(--border-strong);transform:translateY(-2px)}
+    .pulse-dot{width:8px;height:8px;background:#22c55e;border-radius:50%;position:relative}
+    .pulse-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;background:rgba(34,197,94,.4);animation:ring 2s infinite}
+    @keyframes ring{0%{transform:scale(.9);opacity:.8}50%{transform:scale(1.6);opacity:0}100%{transform:scale(.9);opacity:0}}
+    .grid-pattern{background-size:36px 36px;background-image:linear-gradient(to right,var(--border) 1px,transparent 1px),linear-gradient(to bottom,var(--border) 1px,transparent 1px);mask-image:radial-gradient(ellipse 70% 50% at 50% 0%,#000 70%,transparent 100%);opacity:.4}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg-base)}::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:99px}
+    .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--accent);color:var(--accent-inverse);padding:12px 20px;border-radius:16px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.16,1,.3,1);z-index:99;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+  </style>
+</head>
+<body class="min-h-screen antialiased">
+
+  <!-- Background pattern -->
+  <div class="fixed inset-0 grid-pattern pointer-events-none"></div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b" style="border-color:var(--border);backdrop-filter:blur(14px);background:color-mix(in srgb, var(--bg-base) 85%, transparent)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-18 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black mono text-sm" style="background:var(--accent);color:var(--accent-inverse)">&lt;/&gt;</div>
+        <div>
+          <div class="font-extrabold text-sm font-heading tracking-wider">HTML TEMPLATES</div>
+          <div class="text-[10px] mono uppercase" style="color:var(--text-muted)">10 production-ready demos</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] mono" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary)">
+          <span class="pulse-dot"></span> v1.0 // 2026
+        </div>
+        <button onclick="toggleTheme()" class="btn-secondary p-2.5 rounded-xl" aria-label="Toggle theme">
+          <svg id="sunIcon" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg id="moonIcon" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://github.com/dervicdev" target="_blank" class="btn-primary px-4 py-2.5 rounded-xl text-xs font-bold mono flex items-center gap-2">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span class="hidden sm:inline">GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center space-y-6 relative">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs mono" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary)">
+      <span class="pulse-dot"></span> SINGLE FILE • ZERO BUILD • COPY & DEPLOY
+    </div>
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-black font-heading tracking-tight leading-[1.05]">
+      10 Premium HTML Templates.<br>One <span style="text-decoration:underline;text-decoration-color:var(--border-strong);text-underline-offset:8px">Demo Hub</span>.
+    </h1>
+    <p class="text-sm sm:text-base max-w-2xl mx-auto leading-relaxed" style="color:var(--text-secondary)">
+      Monochrome design system, dark/light mode, fully interactive vanilla JS. Each template is a single self-contained HTML file — open it, host it, ship it.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-3 mono text-xs">
+      <a href="#templates" class="btn-primary px-6 py-3.5 rounded-xl font-bold uppercase tracking-wider">Browse Templates ↓</a>
+      <button onclick="openAll()" class="btn-secondary px-6 py-3.5 rounded-xl font-bold uppercase tracking-wider">Open All Demos</button>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 max-w-3xl mx-auto mono text-xs">
+      <div class="card p-4 rounded-2xl"><div class="text-2xl font-black font-heading">10</div><div style="color:var(--text-muted)" class="mt-1">Templates</div></div>
+      <div class="card p-4 rounded-2xl"><div class="text-2xl font-black font-heading">0</div><div style="color:var(--text-muted)" class="mt-1">Dependencies to build</div></div>
+      <div class="card p-4 rounded-2xl"><div class="text-2xl font-black font-heading">100%</div><div style="color:var(--text-muted)" class="mt-1">Dark / Light mode</div></div>
+      <div class="card p-4 rounded-2xl"><div class="text-2xl font-black font-heading">~50kb</div><div style="color:var(--text-muted)" class="mt-1">Avg per template</div></div>
+    </div>
+  </section>
+
+  <!-- TEMPLATE GRID -->
+  <main id="templates" class="max-w-7xl mx-auto px-4 sm:px-6 pb-24 space-y-10">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b pb-4" style="border-color:var(--border)">
+      <div>
+        <span class="text-xs mono font-bold uppercase tracking-widest" style="color:var(--text-muted)">// Catalog</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Live Demo Gallery</h2>
+      </div>
+      <div class="flex flex-wrap gap-2 mono text-xs">
+        <button onclick="filterCat('all')" data-cat="all" class="cat-btn btn-primary px-4 py-2 rounded-xl font-bold">ALL</button>
+        <button onclick="filterCat('business')" data-cat="business" class="cat-btn btn-secondary px-4 py-2 rounded-xl font-bold">BUSINESS</button>
+        <button onclick="filterCat('commerce')" data-cat="commerce" class="cat-btn btn-secondary px-4 py-2 rounded-xl font-bold">COMMERCE</button>
+        <button onclick="filterCat('personal')" data-cat="personal" class="cat-btn btn-secondary px-4 py-2 rounded-xl font-bold">PERSONAL</button>
+      </div>
+    </div>
+
+    <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- injected --></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t py-10 mono text-xs relative" style="border-color:var(--border);color:var(--text-muted)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>© 2026 HTML TEMPLATE COLLECTION // MIT LICENSE</div>
+      <div class="flex gap-6">
+        <a href="https://github.com/dervicdev/html-templates" target="_blank" class="hover:underline">REPO</a>
+        <a href="./README.md" class="hover:underline">README</a>
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="hover:underline">TOP [^]</button>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast">Link copied!</div>
+
+  <script>
+    const TEMPLATES = [
+      { file:"chang-dev.html",       name:"CHANG-DEV Corporate",    cat:"business",  icon:"🏢", tag:"Corporate Services",  desc:"Seychelles corporate services site with split-panel layout, contact form and scroll sections." },
+      { file:"childhood.html",       name:"Elemental Kids Academy", cat:"business",  icon:"🧸", tag:"Kindergarten / School", desc:"Early learning hub with tuition calculator, weekly menu tabs, enrollment form and gallery modal." },
+      { file:"developer-site.html",  name:"DEV // Studio",          cat:"personal",  icon:"⌨️", tag:"Developer Portfolio", desc:"Terminal-style hero with working shell commands, code tabs, commit heatmap and repo modals." },
+      { file:"lnikinbio.html",       name:"ALEX.DEV Brutalist Bio", cat:"personal",  icon:"⚡", tag:"Link in Bio",         desc:"Neo-brutalist link-in-bio with marquee ticker, QR modal, search/filter and vibe counter." },
+      { file:"modern-biolink.html",  name:"Alex Morgan Link Hub",   cat:"personal",  icon:"🔗", tag:"Link in Bio",         desc:"Modern monochrome bio link page with QR modal, share API, contact & newsletter modals." },
+      { file:"modernbloger.html",    name:"JOURNAL Blog Platform",  cat:"personal",  icon:"📰", tag:"Blog / Magazine",     desc:"Publishing platform with live search, category filters, full article reader modal and sidebar widgets." },
+      { file:"onlinestori.html",     name:"VAULTSTORE E-Commerce",  cat:"commerce",  icon:"🛒", tag:"Online Store",        desc:"Full store with cart drawer, promo codes (VAULT20), checkout flow, FAQ accordion and filters." },
+      { file:"phptograf.html",       name:"LENS Photography Studio",cat:"personal",  icon:"📷", tag:"Photography",         desc:"Grayscale photo gallery with lightbox EXIF viewer, category filters and pricing calculator." },
+      { file:"portfolio-am.html",    name:"Alex Morgan Portfolio",  cat:"personal",  icon:"💼", tag:"Portfolio",           desc:"Creative engineer portfolio with project filters, case-study modals, timeline and resume modal." },
+      { file:"websitemarktplaz.html",name:"CODEVAULT Marketplace",  cat:"commerce",  icon:"🛍️", tag:"Digital Marketplace", desc:"Script marketplace with search, cart, license checkout, code snippet viewer and FAQ." },
+    ];
+
+    const grid = document.getElementById('grid');
+    let activeCat = 'all';
+
+    function render() {
+      const list = TEMPLATES.filter(t => activeCat === 'all' || t.cat === activeCat);
+      grid.innerHTML = list.map((t, i) => `
+        <div class="card rounded-3xl p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="mono text-[10px] uppercase px-2.5 py-1 rounded-md" style="background:var(--bg-muted);border:1px solid var(--border);color:var(--text-secondary)">${t.tag}</span>
+              <span class="mono text-[10px]" style="color:var(--text-muted)">${String(i+1).padStart(2,'0')}/10</span>
+            </div>
+            <div class="w-full aspect-video rounded-2xl flex items-center justify-center text-5xl" style="background:var(--bg-muted);border:1px solid var(--border)">${t.icon}</div>
+            <div>
+              <h3 class="font-extrabold text-lg font-heading">${t.name}</h3>
+              <p class="text-xs mt-2 leading-relaxed" style="color:var(--text-secondary)">${t.desc}</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-2 mono text-xs">
+            <a href="./${t.file}" target="_blank" class="btn-primary py-2.5 rounded-xl font-bold text-center text-[11px] uppercase">▶ Demo</a>
+            <button onclick="copyLink('${t.file}')" class="btn-secondary py-2.5 rounded-xl font-bold text-[11px] uppercase">Copy Link</button>
+            <a href="./${t.file}" download class="btn-secondary py-2.5 rounded-xl font-bold text-center text-[11px] uppercase">↓ HTML</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCat(cat) {
+      activeCat = cat;
+      document.querySelectorAll('.cat-btn').forEach(b => {
+        const active = b.dataset.cat === cat;
+        b.className = `cat-btn px-4 py-2 rounded-xl font-bold ${active ? 'btn-primary' : 'btn-secondary'}`;
+      });
+      render();
+    }
+
+    function copyLink(file) {
+      const url = new URL(file, location.href).href;
+      navigator.clipboard?.writeText(url).catch(()=>{});
+      toast(`Copied: ${url}`);
+    }
+
+    function openAll() { TEMPLATES.forEach(t => window.open('./' + t.file, '_blank')); }
+
+    function toast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 2500);
+    }
+
+    // Theme
+    function toggleTheme() {
+      const html = document.documentElement;
+      const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+      html.dataset.theme = next;
+      document.getElementById('sunIcon').classList.toggle('hidden', next !== 'dark');
+      document.getElementById('moonIcon').classList.toggle('hidden', next === 'dark');
+      localStorage.setItem('demo_theme', next);
+    }
+    const saved = localStorage.getItem('demo_theme') || 'dark';
+    document.documentElement.dataset.theme = saved;
+    document.getElementById('sunIcon').classList.toggle('hidden', saved !== 'dark');
+    document.getElementById('moonIcon').classList.toggle('hidden', saved === 'dark');
+
+    render();
+  </script>
+</body>
+</html>

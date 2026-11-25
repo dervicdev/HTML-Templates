@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINDERGARTEN // Early Learning & Development Hub</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg-base: #030304;
+      --bg-surface: #0a0a0c;
+      --bg-card: #111114;
+      --bg-card-hover: #18181c;
+      --bg-muted: #1e1e24;
+      
+      --border-color: #1f1f24;
+      --border-color-strong: #3f3f46;
+      
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      
+      --accent: #ffffff;
+      --accent-inverse: #000000;
+      
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+    }
+
+    [data-theme="light"] {
+      --bg-base: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --bg-muted: #e2e8f0;
+      
+      --border-color: #e2e8f0;
+      --border-color-strong: #cbd5e1;
+      
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      
+      --accent: #0f172a;
+      --accent-inverse: #ffffff;
+      
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      min-height: 100vh;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .ui-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--card-shadow);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ui-card-interactive:hover {
+      background-color: var(--bg-card-hover);
+      border-color: var(--border-color-strong);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--accent-inverse);
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-muted);
+      border-color: var(--border-color-strong);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .pulse-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background-color: rgba(34, 197, 94, 0.4);
+      animation: pulse-ring 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.6); opacity: 0; }
+      100% { transform: scale(0.9); opacity: 0; }
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-base);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color-strong);
+      border-radius: 9999px;
+    }
+
+    .glass-header {
+      background-color: rgba(3, 3, 4, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+    }
+    [data-theme="light"] .glass-header {
+      background-color: rgba(248, 250, 252, 0.88);
+    }
+
+    .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen antialiased">
+
+  <!-- ================= HEADER & NAV ================= -->
+  <header class="sticky top-0 z-40 w-full glass-header transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+      
+      <a href="#" class="flex items-center gap-3 shrink-0">
+        <div class="w-10 h-10 rounded-xl bg-[var(--accent)] text-[var(--accent-inverse)] flex items-center justify-center font-black font-mono-code text-base">
+          EK
+        </div>
+        <div>
+          <span class="font-extrabold text-sm tracking-wider font-heading block leading-none">
+            ELEMENTAL KIDS
+          </span>
+          <span class="text-[10px] text-[var(--text-muted)] font-mono-code tracking-widest block mt-0.5 uppercase">
+            Early Childhood Learning
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-6 font-mono-code text-xs">
+        <a href="#programs" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Programs</a>
+        <a href="#schedule" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Daily Schedule</a>
+        <a href="#calculator" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Tuition</a>
+        <a href="#gallery" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Gallery & Tour</a>
+        <a href="#nutrition" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Nutrition</a>
+        <a href="#educators" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Staff</a>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-color)] font-mono-code text-[11px]">
+          <span class="pulse-dot"></span>
+          <span class="text-[var(--text-muted)]">FALL '26: <strong class="text-[var(--text-primary)]">OPEN ENROLLMENT</strong></span>
+        </div>
+
+        <button onclick="scrollToEnrollment()" class="hidden md:flex btn-primary px-4 py-2 rounded-xl text-xs font-bold font-mono-code uppercase">
+          Apply Now
+        </button>
+
+        <!-- Theme Switcher -->
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="btn-secondary p-2.5 rounded-xl flex items-center justify-center" aria-label="Toggle Theme">
+          <svg id="moonIcon" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sunIcon" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-16">
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="ui-card p-8 sm:p-14 rounded-3xl space-y-8 relative overflow-hidden border border-[var(--border-color-strong)]">
+      <div class="max-w-3xl space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs font-mono-code">
+          <span class="pulse-dot"></span>
+          <span class="text-[var(--text-secondary)]">ACCREDITED MONTESSORI & REGGIO-INSPIRED ACADEMY</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-6xl font-black font-heading tracking-tight leading-none">
+          Cultivating Curiosity, Character & Early Knowledge
+        </h1>
+
+        <p class="text-sm sm:text-base text-[var(--text-secondary)] font-mono-code leading-relaxed">
+          A modern early learning environment for ages 6 months to 6 years. Combining structured STEAM exploration, organic nutrition, and personalized child development pathways.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 pt-2 font-mono-code text-xs">
+          <button onclick="scrollToEnrollment()" class="btn-primary px-6 py-3.5 rounded-xl font-bold uppercase tracking-wider">
+            Schedule A Tour / Enroll
+          </button>
+          <a href="#calculator" class="btn-secondary px-6 py-3.5 rounded-xl font-bold uppercase tracking-wider">
+            Calculate Tuition
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-[var(--border-color)] font-mono-code text-xs">
+        <div>
+          <div class="text-2xl font-black font-heading text-[var(--text-primary)]">1:5</div>
+          <div class="text-[var(--text-muted)] text-[11px] mt-0.5">Teacher-to-Child Ratio</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black font-heading text-[var(--text-primary)]">100%</div>
+          <div class="text-[var(--text-muted)] text-[11px] mt-0.5">Organic Chef-Prepared Meals</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black font-heading text-[var(--text-primary)]">STEAM+</div>
+          <div class="text-[var(--text-muted)] text-[11px] mt-0.5">Early Science & Creative Arts</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black font-heading text-[var(--text-primary)]">7:00–18:00</div>
+          <div class="text-[var(--text-muted)] text-[11px] mt-0.5">Extended Care Hours</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 1. INTERACTIVE AGE GROUPS & CURRICULUM ================= -->
+    <section id="programs" class="space-y-6">
+      <div class="border-b border-[var(--border-color)] pb-4 flex flex-col sm:flex-row justify-between sm:items-end gap-2">
+        <div>
+          <span class="text-xs font-mono-code font-bold uppercase text-[var(--text-muted)]">01 // Academic Pathways</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Age-Group Curriculums</h2>
+        </div>
+        <div class="text-xs font-mono-code text-[var(--text-muted)]">
+          Select age band to inspect curriculum focus
+        </div>
+      </div>
+
+      <!-- Program Selector Tabs -->
+      <div class="flex flex-wrap gap-2 font-mono-code text-xs" id="programTabs">
+        <button onclick="switchProgram('nursery')" id="progBtn-nursery" class="btn-primary px-5 py-2.5 rounded-xl font-bold">1. Nursery (6m – 18m)</button>
+        <button onclick="switchProgram('toddler')" id="progBtn-toddler" class="btn-secondary px-5 py-2.5 rounded-xl font-bold">2. Toddler (18m – 3y)</button>
+        <button onclick="switchProgram('preschool')" id="progBtn-preschool" class="btn-secondary px-5 py-2.5 rounded-xl font-bold">3. Preschool (3y – 4.5y)</button>
+        <button onclick="switchProgram('kindergarten')" id="progBtn-kindergarten" class="btn-secondary px-5 py-2.5 rounded-xl font-bold">4. Kindergarten (4.5y – 6y)</button>
+      </div>
+
+      <!-- Program Detail Display Card -->
+      <div id="programDetailCard" class="ui-card p-6 sm:p-10 rounded-3xl space-y-6">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- ================= 2. DAILY ACTIVITY SCHEDULE TIMELINE ================= -->
+    <section id="schedule" class="space-y-6">
+      <div class="border-b border-[var(--border-color)] pb-4 flex flex-col sm:flex-row justify-between sm:items-end gap-2">
+        <div>
+          <span class="text-xs font-mono-code font-bold uppercase text-[var(--text-muted)]">02 // Daily Routine</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Structured Activity Timeline</h2>
+        </div>
+        <div class="text-xs font-mono-code text-[var(--text-muted)]">
+          Monitors cognitive, social & physical balance
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 font-mono-code text-xs">
+        
+        <div class="ui-card p-5 rounded-2xl space-y-2 border-l-4 border-l-emerald-500">
+          <div class="flex justify-between items-center text-[var(--text-muted)]">
+            <span>07:00 – 08:30</span>
+            <span class="bg-[var(--bg-surface)] px-2 py-0.5 rounded border border-[var(--border-color)] text-[10px]">Arrival</span>
+          </div>
+          <div class="font-bold text-sm text-[var(--text-primary)]">Morning Welcome & Free Play</div>
+          <p class="text-[var(--text-secondary)] text-[11px] leading-relaxed">Sensory exploration tables, quiet reading corners, and individual drop-off transitions.</p>
+        </div>
+
+        <div class="ui-card p-5 rounded-2xl space-y-2 border-l-4 border-l-blue-500">
+          <div class="flex justify-between items-center text-[var(--text-muted)]">
+            <span>08:30 – 09:15</span>
+            <span class="bg-[var(--bg-surface)] px-2 py-0.5 rounded border border-[var(--border-color)] text-[10px]">Nutrition</span>
+          </div>
+          <div class="font-bold text-sm text-[var(--text-primary)]">Organic Breakfast & Morning Circle</div>
+          <p class="text-[var(--text-secondary)] text-[11px] leading-relaxed">Seasonal fruit bowl, warm porridge, calendar songs, weather check, and daily goal setting.</p>
+        </div>
+
+        <div class="ui-card p-5 rounded-2xl space-y-2 border-l-4 border-l-purple-500">
+          <div class="flex justify-between items-center text-[var(--text-muted)]">
+            <span>09:15 – 11:30</span>
+            <span class="bg-[var(--bg-surface)] px-2 py-0.5 rounded border border-[var(--border-color)] text-[10px]">Core Learning</span>
+          </div>
+          <div class="font-bold text-sm text-[var(--text-primary)]">STEAM Workshops & Language Lab</div>
+          <p class="text-[var(--text-secondary)] text-[11px] leading-relaxed">Guided math blocks, phonics games, hands-on science experiments, and dual-language immersion.</p>
+        </div>
+
+        <div class="ui-card p-5 rounded-2xl space-y-2 border-l-4 border-l-yellow-500">
+          <div class="flex justify-between items-center text-[var(--text-muted)]">
+            <span>11:30 – 12:30</span>
+            <span class="bg-[var(--bg-surface)] px-2 py-0.5 rounded border border-[var(--border-color)] text-[10px]">Outdoor</span>
+          </div>
+          <div class="font-bold text-sm text-[var(--text-primary)]">Outdoor Playground & Nature Exploration</div>
+          <p class="text-[var(--text-secondary)] text-[11px] leading-relaxed">Gross motor play, botanical garden care, obstacle courses, and sandcraft building.</p>
+        </div>
+
+        <div class="ui-card p-5 rounded-2xl space-y-2 border-l-4 border-l-orange-500">
+          <div class="flex justify-between items-center text-[var(--text-muted)]">
+            <span>12:30 – 14:30</span>
+            <span class="bg-[var(--bg-surface)] px-2 py-0.5 rounded border border-[var(--border-color)] text-[10px]">Rest & Recharge</span>
+          </div>
+          <div class="font-bold text-sm text-[var(--text-primary)]">Chef-Prepared Lunch & Rest Period</div>
+          <p class="text-[var(--text-secondary)] text-[11px] leading-relaxed">Balanced warm meal, nap period or quiet mindfulness stories depending on age group.</p>
+        </div>
+
+        <div class="ui-card p-5 rounded-2xl space-y-2 border-l-4 border-l-pink-500">
+          <div class="flex justify-between items-center text-[var(--text-muted)]">
+            <span>14:30 – 18:00</span>
+            <span class="bg-[var(--bg-surface)] px-2 py-0.5 rounded border border-[var(--border-color)] text-[10px]">Afternoon</span>
+          </div>
+          <div class="font-bold text-sm text-[var(--text-primary)]">Creative Arts, Snack & Pick-Up</div>
+          <p class="text-[var(--text-secondary)] text-[11px] leading-relaxed">Music rhythm circles, afternoon organic snack, outdoor play, and daily parent debrief.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 3. TUITION ESTIMATOR & CALCULATOR ================= -->
+    <section id="calculator" class="space-y-6">
+      <div class="border-b border-[var(--border-color)] pb-4 flex flex-col sm:flex-row justify-between sm:items-end gap-2">
+        <div>
+          <span class="text-xs font-mono-code font-bold uppercase text-[var(--text-muted)]">03 // Financial Transparency</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Tuition & Enrollment Estimator</h2>
+        </div>
+        <div class="text-xs font-mono-code text-[var(--text-muted)]">
+          Instant customized fee breakdown
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 font-mono-code text-xs">
+        
+        <!-- Interactive Controls Form -->
+        <div class="lg:col-span-2 ui-card p-6 sm:p-8 rounded-3xl space-y-6">
+          <div class="space-y-2">
+            <label class="font-bold text-[var(--text-primary)]">Select Program Age Band:</label>
+            <select id="calcProgram" onchange="recalculateTuition()" class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)]">
+              <option value="950">Nursery Program (6m – 18m) — Base $950/mo</option>
+              <option value="850" selected>Toddler Program (18m – 3y) — Base $850/mo</option>
+              <option value="780">Preschool Program (3y – 4.5y) — Base $780/mo</option>
+              <option value="720">Kindergarten Readiness (4.5y – 6y) — Base $720/mo</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label class="font-bold text-[var(--text-primary)]">Attendance Schedule Days per Week:</label>
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="setScheduleDays(3)" id="dayBtn-3" class="btn-secondary py-2.5 rounded-xl font-bold">3 Days / Wk</button>
+              <button onclick="setScheduleDays(4)" id="dayBtn-4" class="btn-secondary py-2.5 rounded-xl font-bold">4 Days / Wk</button>
+              <button onclick="setScheduleDays(5)" id="dayBtn-5" class="btn-primary py-2.5 rounded-xl font-bold">5 Days (Full)</button>
+            </div>
+          </div>
+
+          <div class="space-y-3 pt-2">
+            <label class="font-bold text-[var(--text-primary)]">Add-On Enrichment Services:</label>
+            <div class="space-y-2">
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] cursor-pointer">
+                <input type="checkbox" id="addMeal" onchange="recalculateTuition()" checked class="accent-white">
+                <span class="text-xs">Full Organic Chef Meal Plan (Breakfast, Lunch, 2 Snacks) (+ $120/mo)</span>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] cursor-pointer">
+                <input type="checkbox" id="addExtended" onchange="recalculateTuition()" class="accent-white">
+                <span class="text-xs">Extended Care Hours (07:00 – 18:00 Full Access) (+ $150/mo)</span>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] cursor-pointer">
+                <input type="checkbox" id="addLang" onchange="recalculateTuition()" class="accent-white">
+                <span class="text-xs">Dual-Language Immersion Workshop & Music Lab (+ $80/mo)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price Summary Card -->
+        <div class="ui-card p-6 sm:p-8 rounded-3xl space-y-6 flex flex-col justify-between border border-[var(--border-color-strong)]">
+          <div class="space-y-4">
+            <div class="text-[10px] uppercase tracking-widest text-[var(--text-muted)]">Monthly Estimated Tuition</div>
+            <div class="text-4xl font-black font-heading text-[var(--text-primary)]">
+              $<span id="calcTotal">970</span><span class="text-xs font-normal text-[var(--text-muted)]">/month</span>
+            </div>
+
+            <div class="space-y-2 border-t border-[var(--border-color)] pt-4 text-[11px]">
+              <div class="flex justify-between text-[var(--text-secondary)]">
+                <span>Base Tuition:</span>
+                <span id="breakdownBase">$850</span>
+              </div>
+              <div class="flex justify-between text-[var(--text-secondary)]">
+                <span>Meal Plan:</span>
+                <span id="breakdownMeal">$120</span>
+              </div>
+              <div class="flex justify-between text-[var(--text-secondary)]">
+                <span>Extended Hours:</span>
+                <span id="breakdownExtended">$0</span>
+              </div>
+              <div class="flex justify-between text-[var(--text-secondary)]">
+                <span>Language & Music:</span>
+                <span id="breakdownLang">$0</span>
+              </div>
+            </div>
+          </div>
+
+          <button onclick="scrollToEnrollmentWithEstimate()" class="btn-primary w-full py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs">
+            Proceed with this Plan
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 4. GALLERY & VIRTUAL TOUR ================= -->
+    <section id="gallery" class="space-y-6">
+      <div class="border-b border-[var(--border-color)] pb-4 flex flex-col sm:flex-row justify-between sm:items-end gap-2">
+        <div>
+          <span class="text-xs font-mono-code font-bold uppercase text-[var(--text-muted)]">04 // Facility & Environment</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Classroom & Play Spaces</h2>
+        </div>
+        <div class="text-xs font-mono-code text-[var(--text-muted)]">
+          Click any card to inspect space details
+        </div>
+      </div>
+
+      <!-- Photo Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 font-mono-code text-xs">
+        
+        <div onclick="openGalleryModal('STEAM Discovery Lab', 'State-of-the-art sensory science and robotics experimentation space tailored for early learners.', '🔬')" class="ui-card ui-card-interactive p-6 rounded-2xl space-y-4 cursor-pointer">
+          <div class="h-40 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] flex items-center justify-center text-4xl">
+            🔬
+          </div>
+          <div>
+            <div class="font-bold text-sm text-[var(--text-primary)]">STEAM Discovery Lab</div>
+            <p class="text-[var(--text-muted)] text-[11px] mt-1">Tactile materials, safe building blocks, and light tables.</p>
+          </div>
+        </div>
+
+        <div onclick="openGalleryModal('Natural Botanical Garden', 'Outdoor organic vegetable garden where children harvest herbs and study plant life cycles.', '🌿')" class="ui-card ui-card-interactive p-6 rounded-2xl space-y-4 cursor-pointer">
+          <div class="h-40 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] flex items-center justify-center text-4xl">
+            🌿
+          </div>
+          <div>
+            <div class="font-bold text-sm text-[var(--text-primary)]">Natural Botanical Garden</div>
+            <p class="text-[var(--text-muted)] text-[11px] mt-1">Hands-on gardening, bug hotels, and rain harvesting study.</p>
+          </div>
+        </div>
+
+        <div onclick="openGalleryModal('Montessori Reading Nook', 'Quiet acoustic library space with age-appropriate bilingual books and soft seating.', '📖')" class="ui-card ui-card-interactive p-6 rounded-2xl space-y-4 cursor-pointer">
+          <div class="h-40 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] flex items-center justify-center text-4xl">
+            📖
+          </div>
+          <div>
+            <div class="font-bold text-sm text-[var(--text-primary)]">Montessori Reading Nook</div>
+            <p class="text-[var(--text-muted)] text-[11px] mt-1">Curated international children literature and quiet audiobooks.</p>
+          </div>
+        </div>
+
+        <div onclick="openGalleryModal('Acoustic Music & Rhythm Studio', 'Equipped with xylophones, drums, piano keyboards, and rhythm instruments.', '🎶')" class="ui-card ui-card-interactive p-6 rounded-2xl space-y-4 cursor-pointer">
+          <div class="h-40 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] flex items-center justify-center text-4xl">
+            🎶
+          </div>
+          <div>
+            <div class="font-bold text-sm text-[var(--text-primary)]">Acoustic Music Studio</div>
+            <p class="text-[var(--text-muted)] text-[11px] mt-1">Acoustically padded studio for rhythm and vocal expression.</p>
+          </div>
+        </div>
+
+        <div onclick="openGalleryModal('Gross Motor Gym', 'Padded indoor climbing walls, balance beams, and soft gymnastics zones.', '🏃')" class="ui-card ui-card-interactive p-6 rounded-2xl space-y-4 cursor-pointer">
+          <div class="h-40 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] flex items-center justify-center text-4xl">
+            🏃
+          </div>
+          <div>
+            <div class="font-bold text-sm text-[var(--text-primary)]">Gross Motor Gym</div>
+            <p class="text-[var(--text-muted)] text-[11px] mt-1">Safe indoor movement space for rainy weather activities.</p>
+          </div>
+        </div>
+
+        <div onclick="openGalleryModal('Organic Culinary Kitchen', 'Open viewing kitchen where in-house chefs prepare fresh daily organic meals.', '🥗')" class="ui-card ui-card-interactive p-6 rounded-2xl space-y-4 cursor-pointer">
+          <div class="h-40 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] flex items-center justify-center text-4xl">
+            🥗
+          </div>
+          <div>
+            <div class="font-bold text-sm text-[var(--text-primary)]">Organic Culinary Kitchen</div>
+            <p class="text-[var(--text-muted)] text-[11px] mt-1">Nut-free, allergen-safe kitchen with kid cooking workshops.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 5. MEAL PLAN & NUTRITION ================= -->
+    <section id="nutrition" class="space-y-6">
+      <div class="border-b border-[var(--border-color)] pb-4 flex flex-col sm:flex-row justify-between sm:items-end gap-2">
+        <div>
+          <span class="text-xs font-mono-code font-bold uppercase text-[var(--text-muted)]">05 // Organic Nutrition</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Weekly Chef's Menu</h2>
+        </div>
+        <div class="text-xs font-mono-code text-[var(--text-muted)]">
+          100% Organic, Allergen-Conscious & Balanced
+        </div>
+      </div>
+
+      <!-- Day Selector Pills -->
+      <div class="flex flex-wrap gap-2 font-mono-code text-xs">
+        <button onclick="switchMenuDay('mon')" id="dayBtn-mon" class="btn-primary px-4 py-2 rounded-xl font-bold">Monday</button>
+        <button onclick="switchMenuDay('tue')" id="dayBtn-tue" class="btn-secondary px-4 py-2 rounded-xl font-bold">Tuesday</button>
+        <button onclick="switchMenuDay('wed')" id="dayBtn-wed" class="btn-secondary px-4 py-2 rounded-xl font-bold">Wednesday</button>
+        <button onclick="switchMenuDay('thu')" id="dayBtn-thu" class="btn-secondary px-4 py-2 rounded-xl font-bold">Thursday</button>
+        <button onclick="switchMenuDay('fri')" id="dayBtn-fri" class="btn-secondary px-4 py-2 rounded-xl font-bold">Friday</button>
+      </div>
+
+      <!-- Menu Card Display -->
+      <div id="menuCardContainer" class="ui-card p-6 sm:p-8 rounded-3xl space-y-6 font-mono-code text-xs">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- ================= 6. STAFF & EDUCATOR PROFILES ================= -->
+    <section id="educators" class="space-y-6">
+      <div class="border-b border-[var(--border-color)] pb-4 flex flex-col sm:flex-row justify-between sm:items-end gap-2">
+        <div>
+          <span class="text-xs font-mono-code font-bold uppercase text-[var(--text-muted)]">06 // Certified Faculty</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Lead Educators & Specialists</h2>
+        </div>
+        <div class="text-xs font-mono-code text-[var(--text-muted)]">
+          Early Childhood Masters & Montessori Certified
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono-code text-xs">
+        
+        <div class="ui-card p-6 rounded-3xl space-y-4">
+          <div class="w-16 h-16 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-color)] flex items-center justify-center text-2xl font-bold font-heading">
+            EH
+          </div>
+          <div>
+            <div class="font-bold text-sm text-[var(--text-primary)]">Elena Vance, M.Ed.</div>
+            <div class="text-[11px] text-[var(--text-muted)]">Head of Early Pedagogy</div>
+          </div>
+          <p class="text-[11px] text-[var(--text-secondary)] leading-relaxed">12+ years in Montessori & Reggio Emilia frameworks. Specializes in child language development.</p>
+          <div class="pt-2 border-t border-[var(--border-color)] text-[10px] text-[var(--text-muted)]">
+            Certifications: AMI Montessori Lead, Pediatric CPR
+          </div>
+        </div>
+
+        <div class="ui-card p-6 rounded-3xl space-y-4">
+          <div class="w-16 h-16 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-color)] flex items-center justify-center text-2xl font-bold font-heading">
+            MR
+          </div>
+          <div>
+            <div class="font-bold text-sm text-[var(--text-primary)]">Marcus Reed, B.S.</div>
+            <div class="text-[11px] text-[var(--text-muted)]">STEAM & Motor Skills Lead</div>
+          </div>
+          <p class="text-[11px] text-[var(--text-secondary)] leading-relaxed">Focuses on tactile math exploration, early robotics, and gross motor physical development.</p>
+          <div class="pt-2 border-t border-[var(--border-color)] text-[10px] text-[var(--text-muted)]">
+            Certifications: STEAM Childhood Cert, First Aid
+          </div>
+        </div>
+
+        <div class="ui-card p-6 rounded-3xl space-y-4">
+          <div class="w-16 h-16 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-color)] flex items-center justify-center text-2xl font-bold font-heading">
+            SL
+          </div>
+          <div>
+            <div class="font-bold text-sm text-[var(--text-primary)]">Sophia Lin, Chef</div>
+            <div class="text-[11px] text-[var(--text-muted)]">Culinary & Nutrition Director</div>
+          </div>
+          <p class="text-[11px] text-[var(--text-secondary)] leading-relaxed">Crafts 100% organic, balanced menus tailored for early digestive wellness and allergen safety.</p>
+          <div class="pt-2 border-t border-[var(--border-color)] text-[10px] text-[var(--text-muted)]">
+            Certifications: Pediatric Nutritionist, SafeServe
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 7. INTERACTIVE ENROLLMENT FORM ================= -->
+    <section id="enrollment" class="space-y-6">
+      <div class="border-b border-[var(--border-color)] pb-4">
+        <span class="text-xs font-mono-code font-bold uppercase text-[var(--text-muted)]">07 // Application Portal</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Enrollment & Tour Request</h2>
+      </div>
+
+      <div class="ui-card p-6 sm:p-10 rounded-3xl space-y-6 font-mono-code text-xs">
+        <form id="enrollForm" onsubmit="handleEnrollmentSubmit(event)" class="space-y-6">
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label class="font-bold text-[var(--text-primary)]">Parent / Guardian Full Name *</label>
+              <input type="text" required placeholder="e.g. Sarah Jenkins" class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)]" />
+            </div>
+
+            <div class="space-y-2">
+              <label class="font-bold text-[var(--text-primary)]">Contact Email Address *</label>
+              <input type="email" required placeholder="sarah@domain.com" class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)]" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="space-y-2">
+              <label class="font-bold text-[var(--text-primary)]">Child's Name & Age *</label>
+              <input type="text" required placeholder="Leo (2 years 4 months)" class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)]" />
+            </div>
+
+            <div class="space-y-2">
+              <label class="font-bold text-[var(--text-primary)]">Target Program Group</label>
+              <select id="formProgramSelect" class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)]">
+                <option value="Nursery">Nursery (6m – 18m)</option>
+                <option value="Toddler" selected>Toddler (18m – 3y)</option>
+                <option value="Preschool">Preschool (3y – 4.5y)</option>
+                <option value="Kindergarten">Kindergarten (4.5y – 6y)</option>
+              </select>
+            </div>
+
+            <div class="space-y-2">
+              <label class="font-bold text-[var(--text-primary)]">Preferred Schedule</label>
+              <select id="formScheduleSelect" class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)]">
+                <option value="5 Days Full">5 Days / Week Full Time</option>
+                <option value="4 Days">4 Days / Week</option>
+                <option value="3 Days">3 Days / Week</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label class="font-bold text-[var(--text-primary)]">Special Notes, Dietary Preferences or Tour Requests</label>
+            <textarea rows="3" placeholder="Mention any food allergies, requested tour dates, or specific child needs..." class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)]"></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[var(--border-color)]">
+            <div class="text-[10px] text-[var(--text-muted)]">
+              🔒 Applications are processed confidentially. Response time within 24 hours.
+            </div>
+
+            <button type="submit" class="btn-primary px-8 py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs w-full sm:w-auto">
+              Submit Enrollment Application
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="mt-20 border-t border-[var(--border-color)] bg-[var(--bg-surface)] font-mono-code text-xs text-[var(--text-muted)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        <div class="font-bold text-[var(--text-primary)] font-heading text-sm">ELEMENTAL KIDS ACADEMY</div>
+        <div class="mt-1 text-[11px]">Licensed & Accredited Early Learning Center.</div>
+      </div>
+
+      <div class="flex flex-wrap gap-6 text-[11px]">
+        <span>📍 100 Learning Way, Education District</span>
+        <span>📞 (555) 019-2831</span>
+        <span>✉️ admissions@elementalkids.edu</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL GALLERY INSPECTOR ================= -->
+  <div id="galleryModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop">
+    <div class="ui-card max-w-lg w-full p-8 rounded-3xl space-y-6 relative font-mono-code">
+      <button onclick="closeGalleryModal()" class="absolute top-4 right-4 btn-secondary w-8 h-8 rounded-full flex items-center justify-center font-bold">✕</button>
+      
+      <div id="modalIcon" class="text-6xl text-center py-4"></div>
+      <h3 id="modalTitle" class="text-xl font-bold font-heading text-[var(--text-primary)] text-center"></h3>
+      <p id="modalDesc" class="text-xs text-[var(--text-secondary)] leading-relaxed text-center"></p>
+
+      <button onclick="closeGalleryModal()" class="btn-primary w-full py-3 rounded-xl font-bold text-xs uppercase">
+        Close Inspector
+      </button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION BANNER -->
+  <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 opacity-0 pointer-events-none px-5 py-3 rounded-2xl text-xs font-mono-code font-bold bg-[var(--accent)] text-[var(--accent-inverse)] shadow-2xl transition-all duration-300 flex items-center gap-2 z-50">
+    <span class="text-green-400 font-bold">&gt;</span>
+    <span id="toastMessage">Action completed successfully</span>
+  </div>
+
+  <!-- ================= SCRIPT & INTERACTIVITY LOGIC ================= -->
+  <script>
+    // Program Data Matrix
+    const PROGRAM_DATA = {
+      nursery: {
+        title: "Nursery Program",
+        age: "6 months – 18 months",
+        ratio: "1:3 Teacher-to-Infant",
+        desc: "A warm, sensorially rich environment providing individual sleep/feed schedules, motor exploration, and gentle language exposure.",
+        highlights: ["Sensory tactile play mats", "Individualized nap & feeding rhythms", "Daily milestone tracking via app", "Motor skill development blocks"]
+      },
+      toddler: {
+        title: "Toddler Exploration",
+        age: "18 months – 3 years",
+        ratio: "1:4 Teacher-to-Toddler",
+        desc: "Focuses on language leaps, self-help skills, emotional regulation, and structured social play in a safe environment.",
+        highlights: ["Potty training encouragement", "Bilingual vocabulary songs", "Organic snack self-serving station", "Outdoor sensory garden study"]
+      },
+      preschool: {
+        title: "Preschool STEAM Hub",
+        age: "3 years – 4.5 years",
+        ratio: "1:6 Teacher-to-Child",
+        desc: "Introduces early math concepts, science curiosity, collaborative art projects, and early phonics awareness.",
+        highlights: ["STEAM science experiments", "Phonics and story creation", "Rhythm and music theory", "Guided social group problem solving"]
+      },
+      kindergarten: {
+        title: "Kindergarten Readiness",
+        age: "4.5 years – 6 years",
+        ratio: "1:8 Teacher-to-Child",
+        desc: "Comprehensive primary school prep including reading fluency, arithmetic foundations, logical thinking, and independent research.",
+        highlights: ["Full primary school literacy prep", "Early geometry and numbers", "Independent STEAM projects", "Leadership and public speaking practice"]
+      }
+    };
+
+    function switchProgram(key) {
+      ['nursery', 'toddler', 'preschool', 'kindergarten'].forEach(k => {
+        const btn = document.getElementById(`progBtn-${k}`);
+        if (btn) {
+          if (k === key) {
+            btn.className = "btn-primary px-5 py-2.5 rounded-xl font-bold";
+          } else {
+            btn.className = "btn-secondary px-5 py-2.5 rounded-xl font-bold";
+          }
+        }
+      });
+
+      const prog = PROGRAM_DATA[key];
+      const detailCard = document.getElementById('programDetailCard');
+      if (prog && detailCard) {
+        detailCard.innerHTML = `
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--border-color)] pb-4 font-mono-code">
+            <div>
+              <span class="text-[10px] text-[var(--text-muted)] font-bold uppercase">AGE GROUP: ${prog.age}</span>
+              <h3 class="text-2xl font-extrabold font-heading text-[var(--text-primary)] mt-1">${prog.title}</h3>
+            </div>
+            <div class="px-3 py-1.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs font-bold text-[var(--text-primary)]">
+              Ratio: ${prog.ratio}
+            </div>
+          </div>
+          <p class="text-xs text-[var(--text-secondary)] font-mono-code leading-relaxed">${prog.desc}</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 font-mono-code text-xs">
+            ${prog.highlights.map(h => `
+              <div class="flex items-center gap-2 p-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)]">
+                <span class="text-green-400 font-bold">✓</span>
+                <span>${h}</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+    }
+
+    // Nutrition Menu Data Matrix
+    const MENU_DATA = {
+      mon: {
+        day: "Monday",
+        breakfast: "Organic Oatmeal with Blueberries & Flaxseed + Warm Oat Milk",
+        lunch: "Steamed Salmon Filet, Brown Rice & Roast Broccoli Florets",
+        snack1: "Apple Slices with Homemade Sunflower Seed Butter",
+        snack2: "Carrot Sticks & Avocado Hummus Dip"
+      },
+      tue: {
+        day: "Tuesday",
+        breakfast: "Whole Grain French Toast Strips + Fresh Strawberry Puree",
+        lunch: "Free-Range Turkey Meatballs, Whole Wheat Penne & Marinara",
+        snack1: "Organic Greek Yogurt with Banana Slices",
+        snack2: "Cucumber Coins & Baked Pita Wedges"
+      },
+      wed: {
+        day: "Wednesday",
+        breakfast: "Warm Quinoa Porridge with Baked Apple & Cinnamon",
+        lunch: "Lentil & Sweet Potato Veggie Stew + Fresh Whole Grain Roll",
+        snack1: "Pear Slices & Organic Cheddar Cheese Cubes",
+        snack2: "Homemade Chia Seed Pudding"
+      },
+      thu: {
+        day: "Thursday",
+        breakfast: "Fluffy Spinach & Egg Muffins + Fresh Orange Wedges",
+        lunch: "Grilled Grass-Fed Beef Patties, Sweet Potato Wedges & Peas",
+        snack1: "Rice Cakes with Avocado Mash",
+        snack2: "Fresh Raspberry & Whole Milk Smoothie"
+      },
+      fri: {
+        day: "Friday",
+        breakfast: "Multi-Grain Pancakes with Fresh Raspberry Topping",
+        lunch: "Baked Cod Nuggets, Roasted Cauliflower & Quinoa Pilaf",
+        snack1: "Melon Cubes & Pumpkin Seed Clusters",
+        snack2: "Warm Baked Zucchini Bread slice"
+      }
+    };
+
+    function switchMenuDay(dayKey) {
+      ['mon', 'tue', 'wed', 'thu', 'fri'].forEach(d => {
+        const btn = document.getElementById(`dayBtn-${d}`);
+        if (btn) {
+          if (d === dayKey) {
+            btn.className = "btn-primary px-4 py-2 rounded-xl font-bold";
+          } else {
+            btn.className = "btn-secondary px-4 py-2 rounded-xl font-bold";
+          }
+        }
+      });
+
+      const menu = MENU_DATA[dayKey];
+      const container = document.getElementById('menuCardContainer');
+      if (menu && container) {
+        container.innerHTML = `
+          <div class="font-bold text-sm text-[var(--text-primary)] border-b border-[var(--border-color)] pb-3 font-heading">
+            DAILY MENU: ${menu.day.toUpperCase()}
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-color)] space-y-1">
+              <span class="text-[10px] text-[var(--text-muted)] font-bold uppercase">08:30 BREAKFAST</span>
+              <div class="font-bold text-[var(--text-primary)]">${menu.breakfast}</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-color)] space-y-1">
+              <span class="text-[10px] text-[var(--text-muted)] font-bold uppercase">12:30 CHEF LUNCH</span>
+              <div class="font-bold text-[var(--text-primary)]">${menu.lunch}</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-color)] space-y-1">
+              <span class="text-[10px] text-[var(--text-muted)] font-bold uppercase">10:15 MORNING SNACK</span>
+              <div class="font-bold text-[var(--text-primary)]">${menu.snack1}</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-color)] space-y-1">
+              <span class="text-[10px] text-[var(--text-muted)] font-bold uppercase">15:30 AFTERNOON SNACK</span>
+              <div class="font-bold text-[var(--text-primary)]">${menu.snack2}</div>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Tuition Calculator Logic
+    let selectedDays = 5;
+
+    function setScheduleDays(days) {
+      selectedDays = days;
+      [3, 4, 5].forEach(d => {
+        const btn = document.getElementById(`dayBtn-${d}`);
+        if (btn) {
+          if (d === days) {
+            btn.className = "btn-primary py-2.5 rounded-xl font-bold";
+          } else {
+            btn.className = "btn-secondary py-2.5 rounded-xl font-bold";
+          }
+        }
+      });
+      recalculateTuition();
+    }
+
+    function recalculateTuition() {
+      const baseSelect = document.getElementById('calcProgram');
+      const baseVal = parseInt(baseSelect.value) || 850;
+
+      // Day scale multiplier
+      let dayMultiplier = 1;
+      if (selectedDays === 3) dayMultiplier = 0.72;
+      if (selectedDays === 4) dayMultiplier = 0.88;
+
+      const calculatedBase = Math.round(baseVal * dayMultiplier);
+
+      const addMeal = document.getElementById('addMeal').checked ? 120 : 0;
+      const addExtended = document.getElementById('addExtended').checked ? 150 : 0;
+      const addLang = document.getElementById('addLang').checked ? 80 : 0;
+
+      const total = calculatedBase + addMeal + addExtended + addLang;
+
+      document.getElementById('calcTotal').textContent = total;
+      document.getElementById('breakdownBase').textContent = `$${calculatedBase}`;
+      document.getElementById('breakdownMeal').textContent = `$${addMeal}`;
+      document.getElementById('breakdownExtended').textContent = `$${addExtended}`;
+      document.getElementById('breakdownLang').textContent = `$${addLang}`;
+    }
+
+    // Scroll & Form Helpers
+    function scrollToEnrollment() {
+      document.getElementById('enrollment').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function scrollToEnrollmentWithEstimate() {
+      const total = document.getElementById('calcTotal').textContent;
+      scrollToEnrollment();
+      showToast(`Carried over calculated plan estimate ($${total}/mo)`);
+    }
+
+    function handleEnrollmentSubmit(e) {
+      e.preventDefault();
+      showToast('Enrollment application submitted successfully!');
+      e.target.reset();
+    }
+
+    // Gallery Modal Inspector
+    function openGalleryModal(title, desc, icon) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalIcon').textContent = icon;
+      document.getElementById('galleryModal').classList.remove('hidden');
+    }
+
+    function closeGalleryModal() {
+      document.getElementById('galleryModal').classList.add('hidden');
+    }
+
+    // Toast Notification Banner
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMessage');
+      if (!toast || !toastMsg) return;
+
+      toastMsg.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+
+    // Dark/Light Theme Switching Engine
+    const htmlEl = document.documentElement;
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+
+    function updateThemeUI(theme) {
+      if (theme === 'dark') {
+        htmlEl.setAttribute('data-theme', 'dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        htmlEl.setAttribute('data-theme', 'light');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+
+    function toggleTheme() {
+      const current = htmlEl.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('mono_kindergarten_theme', next);
+      updateThemeUI(next);
+      showToast(`Switched to ${next.toUpperCase()} theme`);
+    }
+
+    // Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('mono_kindergarten_theme') || 'dark';
+      updateThemeUI(savedTheme);
+      switchProgram('toddler');
+      switchMenuDay('mon');
+      recalculateTuition();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALEX MORGAN // Senior Creative Engineer & UI Specialist</title>
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Monochrome CSS Variable System */
+    :root {
+      --bg-base: #000000;
+      --bg-surface: #09090b;
+      --bg-card: #121215;
+      --bg-card-hover: #18181b;
+      --bg-muted: #27272a;
+      
+      --border-color: #27272a;
+      --border-color-strong: #3f3f46;
+      
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      
+      --accent: #ffffff;
+      --accent-inverse: #000000;
+      
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --card-shadow-hover: 0 20px 40px -15px rgba(255, 255, 255, 0.08);
+      --badge-bg: #ffffff;
+      --badge-text: #000000;
+      
+      --glow-color: rgba(255, 255, 255, 0.15);
+    }
+
+    [data-theme="light"] {
+      --bg-base: #f4f4f5;
+      --bg-surface: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f8f9fa;
+      --bg-muted: #e4e4e7;
+      
+      --border-color: #e4e4e7;
+      --border-color-strong: #d4d4d8;
+      
+      --text-primary: #09090b;
+      --text-secondary: #52525b;
+      --text-muted: #71717a;
+      
+      --accent: #09090b;
+      --accent-inverse: #ffffff;
+      
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+      --card-shadow-hover: 0 20px 35px -10px rgba(0, 0, 0, 0.12);
+      --badge-bg: #09090b;
+      --badge-text: #ffffff;
+      
+      --glow-color: rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      min-height: 100vh;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Modern Card Styles */
+    .ui-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--card-shadow);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ui-card-interactive {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--card-shadow);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ui-card-interactive:hover {
+      background-color: var(--bg-card-hover);
+      border-color: var(--border-color-strong);
+      transform: translateY(-4px);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--accent-inverse);
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -4px var(--glow-color);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-muted);
+      border-color: var(--border-color-strong);
+      transform: translateY(-2px);
+    }
+
+    .badge {
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .badge-subtle {
+      background-color: var(--bg-muted);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+      font-size: 0.7rem;
+    }
+
+    /* Glass Effect Navbar */
+    .glass-nav {
+      background-color: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    [data-theme="light"] .glass-nav {
+      background-color: rgba(255, 255, 255, 0.88);
+    }
+
+    /* Pulse Green Dot for Availability */
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .pulse-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background-color: rgba(34, 197, 94, 0.4);
+      animation: pulse-ring 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.6); opacity: 0; }
+      100% { transform: scale(0.9); opacity: 0; }
+    }
+
+    /* Grid Background Pattern */
+    .bg-grid-pattern {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+      opacity: 0.35;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-base);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color-strong);
+      border-radius: 9999px;
+    }
+
+    /* Modal Backdrop Blur */
+    .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    #toast {
+      background-color: var(--accent);
+      color: var(--accent-inverse);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen antialiased">
+
+  <!-- Background Decorative Grid -->
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header class="sticky top-0 z-40 w-full glass-nav transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      
+      <!-- Logo Monogram -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-[var(--accent)] text-[var(--accent-inverse)] flex items-center justify-center font-black text-base font-heading transition-transform group-hover:scale-105">
+          AM
+        </div>
+        <div>
+          <span class="font-extrabold text-sm tracking-wider font-heading block leading-none">
+            ALEX MORGAN
+          </span>
+          <span class="text-[10px] text-[var(--text-muted)] font-semibold uppercase tracking-widest block mt-0.5">
+            Creative Engineer
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-[var(--text-secondary)]">
+        <a href="#about" class="hover:text-[var(--text-primary)] transition-colors">About</a>
+        <a href="#skills" class="hover:text-[var(--text-primary)] transition-colors">Tech Stack</a>
+        <a href="#projects" class="hover:text-[var(--text-primary)] transition-colors">Projects</a>
+        <a href="#experience" class="hover:text-[var(--text-primary)] transition-colors">Experience</a>
+        <a href="#contact" class="hover:text-[var(--text-primary)] transition-colors">Contact</a>
+      </nav>
+
+      <!-- Theme Switcher & Actions -->
+      <div class="flex items-center gap-3 z-10">
+        
+        <!-- Dark / Light Theme Toggle -->
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="btn-secondary p-2.5 rounded-xl flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider" aria-label="Toggle Theme">
+          <svg id="moonIcon" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sunIcon" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <span id="themeText" class="hidden sm:inline">Theme</span>
+        </button>
+
+        <a href="#contact" class="hidden sm:flex btn-primary px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider">
+          Let's Talk
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button onclick="toggleMobileNav()" class="md:hidden btn-secondary p-2.5 rounded-xl flex items-center justify-center" aria-label="Toggle Navigation">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden md:hidden border-t border-[var(--border-color)] bg-[var(--bg-surface)] px-6 py-6 space-y-4">
+      <a href="#about" onclick="toggleMobileNav()" class="block text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)]">About</a>
+      <a href="#skills" onclick="toggleMobileNav()" class="block text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)]">Tech Stack</a>
+      <a href="#projects" onclick="toggleMobileNav()" class="block text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)]">Selected Projects</a>
+      <a href="#experience" onclick="toggleMobileNav()" class="block text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)]">Experience</a>
+      <a href="#contact" onclick="toggleMobileNav()" class="block text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)]">Get In Touch</a>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTAINER ================= -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-12 space-y-24 relative z-10">
+
+    <!-- HERO SECTION -->
+    <section id="about" class="pt-6 sm:pt-12">
+      <div class="space-y-8 max-w-4xl">
+        
+        <!-- Status Badge -->
+        <div class="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border-color)] text-xs font-semibold">
+          <span class="pulse-dot"></span>
+          <span class="text-[var(--text-secondary)]">Available for freelance & full-time roles</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black font-heading tracking-tight leading-[1.08]">
+          Crafting digital experiences with <span class="underline decoration-[var(--border-color-strong)] underline-offset-8">precision</span> & modern tech.
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-base sm:text-xl text-[var(--text-secondary)] font-normal leading-relaxed max-w-2xl">
+          I am a Senior Creative Engineer specializing in building scalable web architectures, pixel-perfect design systems, and high-performance interactive interfaces.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#projects" class="btn-primary px-6 py-3.5 rounded-xl text-xs font-extrabold uppercase tracking-widest flex items-center gap-2">
+            <span>View Selected Works</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          
+          <button onclick="openResumeModal()" class="btn-secondary px-6 py-3.5 rounded-xl text-xs font-extrabold uppercase tracking-widest flex items-center gap-2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            <span>Read Resume</span>
+          </button>
+        </div>
+
+        <!-- Quick Stats / Core Tech Pills -->
+        <div class="pt-8 border-t border-[var(--border-color)] grid grid-cols-2 sm:grid-cols-4 gap-6">
+          <div>
+            <p class="font-heading text-3xl font-extrabold">8+ Years</p>
+            <p class="text-xs text-[var(--text-muted)] uppercase font-bold tracking-wider mt-1">Industry Experience</p>
+          </div>
+          <div>
+            <p class="font-heading text-3xl font-extrabold">40+ Projects</p>
+            <p class="text-xs text-[var(--text-muted)] uppercase font-bold tracking-wider mt-1">Shipped Worldwide</p>
+          </div>
+          <div>
+            <p class="font-heading text-3xl font-extrabold">99.9%</p>
+            <p class="text-xs text-[var(--text-muted)] uppercase font-bold tracking-wider mt-1">Client Satisfaction</p>
+          </div>
+          <div>
+            <p class="font-heading text-3xl font-extrabold">100 FPS</p>
+            <p class="text-xs text-[var(--text-muted)] uppercase font-bold tracking-wider mt-1">Render Performance</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECH STACK & SKILLS GRID SECTION -->
+    <section id="skills" class="space-y-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border-color)] pb-4">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-[var(--text-muted)] font-heading">Capabilities</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Tech Stack & Specializations</h2>
+        </div>
+        <p class="text-xs text-[var(--text-secondary)] max-w-xs">
+          Built upon modern web standards, resilient software architecture, and pixel-level UX execution.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Frontend -->
+        <div class="ui-card p-6 rounded-2xl space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-[var(--bg-muted)] border border-[var(--border-color)] flex items-center justify-center">
+            <svg class="w-5 h-5 text-[var(--text-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <h3 class="font-extrabold text-base font-heading">Frontend Engineering</h3>
+          <ul class="space-y-2 text-xs text-[var(--text-secondary)] font-medium">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>TypeScript / JavaScript (ESNext)</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>React / Next.js / Vue.js</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Tailwind CSS / HTML5 Web API</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>WebGL / Three.js / Canvas 2D</li>
+          </ul>
+        </div>
+
+        <!-- Backend & Architecture -->
+        <div class="ui-card p-6 rounded-2xl space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-[var(--bg-muted)] border border-[var(--border-color)] flex items-center justify-center">
+            <svg class="w-5 h-5 text-[var(--text-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          </div>
+          <h3 class="font-extrabold text-base font-heading">Backend & Systems</h3>
+          <ul class="space-y-2 text-xs text-[var(--text-secondary)] font-medium">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Node.js / Express / Fastify</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>RESTful APIs & GraphQL</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>PostgreSQL / Redis / Supabase</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Serverless & Edge Workers</li>
+          </ul>
+        </div>
+
+        <!-- UI/UX Design -->
+        <div class="ui-card p-6 rounded-2xl space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-[var(--bg-muted)] border border-[var(--border-color)] flex items-center justify-center">
+            <svg class="w-5 h-5 text-[var(--text-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+          </div>
+          <h3 class="font-extrabold text-base font-heading">Design Systems</h3>
+          <ul class="space-y-2 text-xs text-[var(--text-secondary)] font-medium">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Figma Component Architecture</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>High-Contrast Design Systems</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Interactive Motion Prototyping</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>WCAG 2.1 AAA Accessibility</li>
+          </ul>
+        </div>
+
+        <!-- DevOps & Tools -->
+        <div class="ui-card p-6 rounded-2xl space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-[var(--bg-muted)] border border-[var(--border-color)] flex items-center justify-center">
+            <svg class="w-5 h-5 text-[var(--text-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"></path><path d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"></path></svg>
+          </div>
+          <h3 class="font-extrabold text-base font-heading">DevOps & Tools</h3>
+          <ul class="space-y-2 text-xs text-[var(--text-secondary)] font-medium">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Git / GitHub Workflows</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Docker & Containerization</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Vercel / Cloudflare Pipelines</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>Jest / Playwright E2E Testing</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SELECTED PROJECTS SHOWCASE SECTION -->
+    <section id="projects" class="space-y-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border-color)] pb-4">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-[var(--text-muted)] font-heading">Portfolio</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Featured Case Studies</h2>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 no-scrollbar">
+          <button onclick="filterProjects('All')" class="proj-filter-btn active btn-primary px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider">All</button>
+          <button onclick="filterProjects('Web Apps')" class="proj-filter-btn btn-secondary px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider">Web Apps</button>
+          <button onclick="filterProjects('Systems')" class="proj-filter-btn btn-secondary px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider">Systems</button>
+          <button onclick="filterProjects('Design')" class="proj-filter-btn btn-secondary px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider">Design</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamic Projects Javascript Injection Target -->
+      </div>
+    </section>
+
+    <!-- INTERACTIVE EXPERIENCE & HISTORY TIMELINE -->
+    <section id="experience" class="space-y-8">
+      <div class="border-b border-[var(--border-color)] pb-4">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[var(--text-muted)] font-heading">Trajectory</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Work History & Roles</h2>
+      </div>
+
+      <div class="relative pl-6 sm:pl-8 space-y-10 border-l border-[var(--border-color-strong)]">
+        
+        <!-- Timeline Item 1 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[var(--accent)] border-4 border-[var(--bg-base)]"></div>
+          <div class="ui-card p-6 sm:p-8 rounded-2xl space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge px-3 py-1 rounded-lg">2024 — Present</span>
+              <span class="text-xs text-[var(--text-muted)] font-semibold">San Francisco, CA (Remote)</span>
+            </div>
+            <h3 class="text-xl font-extrabold font-heading">Lead Creative Engineer @ Vanguard Tech</h3>
+            <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+              Architected high-throughput micro-frontend interfaces and design system standards serving over 2 million monthly active users. Improved render speeds by 42% and standardized component libraries across 5 product teams.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="badge-subtle px-2.5 py-1 rounded-md">TypeScript</span>
+              <span class="badge-subtle px-2.5 py-1 rounded-md">Next.js</span>
+              <span class="badge-subtle px-2.5 py-1 rounded-md">Design Tokens</span>
+              <span class="badge-subtle px-2.5 py-1 rounded-md">GraphQL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[var(--bg-muted)] border-4 border-[var(--bg-base)]"></div>
+          <div class="ui-card p-6 sm:p-8 rounded-2xl space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge-subtle px-3 py-1 rounded-lg">2021 — 2024</span>
+              <span class="text-xs text-[var(--text-muted)] font-semibold">New York, NY</span>
+            </div>
+            <h3 class="text-xl font-extrabold font-heading">Senior Full-Stack UI Specialist @ Apex Digital Studio</h3>
+            <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+              Spearheaded technical development for high-profile client web platforms. Designed interactive 3D product configurators and custom real-time dashboard visualization tools.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="badge-subtle px-2.5 py-1 rounded-md">React</span>
+              <span class="badge-subtle px-2.5 py-1 rounded-md">Three.js</span>
+              <span class="badge-subtle px-2.5 py-1 rounded-md">Tailwind</span>
+              <span class="badge-subtle px-2.5 py-1 rounded-md">Node.js</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[var(--bg-muted)] border-4 border-[var(--bg-base)]"></div>
+          <div class="ui-card p-6 sm:p-8 rounded-2xl space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge-subtle px-3 py-1 rounded-lg">2018 — 2021</span>
+              <span class="text-xs text-[var(--text-muted)] font-semibold">London, UK</span>
+            </div>
+            <h3 class="text-xl font-extrabold font-heading">Frontend Web Developer @ Nexus Systems</h3>
+            <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+              Developed custom single-page applications, responsive e-commerce portals, and web analytics dashboards with heavy emphasis on accessibility standards and semantic HTML5.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="badge-subtle px-2.5 py-1 rounded-md">JavaScript</span>
+              <span class="badge-subtle px-2.5 py-1 rounded-md">Vue.js</span>
+              <span class="badge-subtle px-2.5 py-1 rounded-md">REST APIs</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECT INQUIRY & CONTACT FORM SECTION -->
+    <section id="contact" class="space-y-8">
+      <div class="border-b border-[var(--border-color)] pb-4">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-[var(--text-muted)] font-heading">Collaboration</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">Start A Project Inquiry</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Direct Contact Card (5 Cols) -->
+        <div class="lg:col-span-5 ui-card p-6 sm:p-8 rounded-3xl space-y-6">
+          <div>
+            <h3 class="text-xl font-extrabold font-heading mb-2">Let's build something exceptional together</h3>
+            <p class="text-xs text-[var(--text-secondary)] leading-relaxed">
+              Have a product idea, design system challenge, or open role? Fill out the form or reach out directly through social channels.
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-4 border-t border-[var(--border-color)]">
+            <!-- Email Item -->
+            <div class="flex items-center justify-between p-3.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)]">
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-[var(--text-muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span class="text-xs font-bold font-mono">alex.morgan@example.com</span>
+              </div>
+              <button onclick="copyToClipboard('alex.morgan@example.com', 'Email copied to clipboard!')" class="btn-secondary px-2.5 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider">
+                Copy
+              </button>
+            </div>
+
+            <!-- Social Links -->
+            <div class="grid grid-cols-3 gap-2 text-center text-xs font-bold">
+              <a href="https://github.com" target="_blank" class="btn-secondary py-3 rounded-xl flex items-center justify-center gap-1.5">
+                <span>GitHub</span>
+              </a>
+              <a href="https://linkedin.com" target="_blank" class="btn-secondary py-3 rounded-xl flex items-center justify-center gap-1.5">
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://x.com" target="_blank" class="btn-secondary py-3 rounded-xl flex items-center justify-center gap-1.5">
+                <span>X / Twitter</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-color)] flex items-center gap-3">
+            <div class="pulse-dot"></div>
+            <div>
+              <p class="text-xs font-bold">Average Response Time</p>
+              <p class="text-[10px] text-[var(--text-muted)]">Within 24 business hours</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Interactive Form (7 Cols) -->
+        <div class="lg:col-span-7 ui-card p-6 sm:p-8 rounded-3xl">
+          <form onsubmit="handleContactSubmit(event)" class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] mb-2">Your Name</label>
+                <input type="text" required placeholder="Jane Doe" class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] mb-2">Email Address</label>
+                <input type="email" required placeholder="jane@company.com" class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] mb-2">Project Type</label>
+                <select class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors">
+                  <option>Full Application Engineering</option>
+                  <option>Design System Architecture</option>
+                  <option>UI/UX Redesign & Optimization</option>
+                  <option>Consulting / Technical Lead</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] mb-2">Estimated Budget</label>
+                <select class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors">
+                  <option>$5k — $10k</option>
+                  <option>$10k — $25k</option>
+                  <option>$25k+</option>
+                  <option>Full-time Role Inquiry</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] mb-2">Project Message</label>
+              <textarea rows="4" required placeholder="Tell me about your goals, timelines, and technical requirements..." class="w-full px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-color)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--text-primary)] transition-colors resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary w-full py-3.5 rounded-xl text-xs font-extrabold uppercase tracking-widest flex items-center justify-center gap-2">
+              <span>Send Project Inquiry</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="mt-20 py-10 border-t border-[var(--border-color)] bg-[var(--bg-surface)] text-xs text-[var(--text-muted)] relative z-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-[var(--accent)] text-[var(--accent-inverse)] flex items-center justify-center font-bold font-heading text-xs">
+          AM
+        </div>
+        <div>
+          <p class="font-bold text-[var(--text-primary)]">ALEX MORGAN PORTFOLIO</p>
+          <p class="text-[10px]">High-Contrast Monochrome UI © 2026</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6 font-semibold">
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#skills" class="hover:underline">Skills</a>
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#experience" class="hover:underline">Timeline</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </div>
+
+      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn-secondary px-3 py-2 rounded-xl flex items-center gap-2 text-[11px] font-bold">
+        <span>Back to top</span>
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+      </button>
+
+    </div>
+  </footer>
+
+  <!-- ================= DYNAMIC CASE STUDY MODAL ================= -->
+  <div id="projectModal" class="fixed inset-0 z-50 modal-backdrop hidden opacity-0 transition-opacity duration-300 overflow-y-auto">
+    <div class="min-h-screen px-4 py-8 flex items-center justify-center">
+      <div class="ui-card max-w-3xl w-full p-6 sm:p-10 rounded-3xl relative transform scale-95 transition-transform duration-300 my-auto">
+        
+        <!-- Modal Top Bar -->
+        <div class="flex items-center justify-between pb-6 border-b border-[var(--border-color)] mb-6">
+          <span id="modalCategory" class="badge px-3 py-1 rounded-lg">Category</span>
+
+          <div class="flex items-center gap-2">
+            <button onclick="closeProjectModal()" class="btn-secondary p-2.5 rounded-xl" title="Close Modal">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Target Injection Area -->
+        <div id="modalTarget" class="space-y-6">
+          <!-- Dynamic Project Details Injected Here -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUME MODAL -->
+  <div id="resumeModal" class="fixed inset-0 z-50 modal-backdrop hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+    <div class="ui-card max-w-lg w-full p-8 rounded-3xl relative text-left space-y-5">
+      <div class="flex items-center justify-between border-b border-[var(--border-color)] pb-4">
+        <h3 class="text-xl font-extrabold font-heading">Executive Resume Overview</h3>
+        <button onclick="closeResumeModal()" class="p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)]">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs text-[var(--text-secondary)] leading-relaxed">
+        <p><strong class="text-[var(--text-primary)]">Core Profile:</strong> Senior Creative Engineer with 8+ years leading design systems, enterprise web applications, and web performance engineering.</p>
+        <p><strong class="text-[var(--text-primary)]">Key Competencies:</strong> Micro-frontend Architecture, TypeScript, WebGL/Three.js, Reactive State Systems, WCAG AAA Compliance.</p>
+        <p><strong class="text-[var(--text-primary)]">Education:</strong> B.S. in Computer Science & Interactive Media Design.</p>
+      </div>
+
+      <div class="pt-3 border-t border-[var(--border-color)] flex gap-3">
+        <button onclick="showToast('Resume PDF downloaded!'); closeResumeModal();" class="btn-primary flex-1 py-3 rounded-xl text-xs font-bold uppercase tracking-wider">
+          Download PDF
+        </button>
+        <button onclick="closeResumeModal()" class="btn-secondary px-5 py-3 rounded-xl text-xs font-bold uppercase">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION BANNER -->
+  <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 opacity-0 pointer-events-none px-5 py-3 rounded-2xl text-xs font-bold flex items-center gap-2.5 z-50">
+    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toastMessage">Action completed successfully</span>
+  </div>
+
+  <!-- ================= JAVASCRIPT ENGINE ================= -->
+  <script>
+    // Projects Dataset
+    const PROJECTS = [
+      {
+        id: 1,
+        title: "KINETIC // High-Performance Financial Dashboard",
+        category: "Web Apps",
+        shortDesc: "A real-time trading and portfolio intelligence application designed for high-density financial data streams with zero UI stutter.",
+        coverImg: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+        tags: ["TypeScript", "Next.js", "WebSockets", "Tailwind"],
+        fullDetails: `
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mb-3">KINETIC Financial Platform</h2>
+          <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+            KINETIC is an enterprise-grade financial execution dashboard built to render over 10,000 live tick updates per second using custom Canvas 2D overlays and WebSocket streaming.
+          </p>
+          <div class="w-full h-56 sm:h-72 rounded-2xl overflow-hidden my-4 border border-[var(--border-color)]">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover" />
+          </div>
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Key Engineering Highlights:</h4>
+            <ul class="text-xs text-[var(--text-secondary)] space-y-1.5 list-disc pl-4">
+              <li>Sub-10ms DOM frame updates via worker-thread state calculations.</li>
+              <li>Monochrome high-contrast data visualization for daylight & night trading desks.</li>
+              <li>Fully keyboard-navigable command palette and shortcuts.</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        id: 2,
+        title: "SYNTHESIS // Minimalist Design Token Engine",
+        category: "Systems",
+        shortDesc: "Universal cross-platform design token engine that synchronizes Figma variables with Tailwind CSS and Native mobile style sheets.",
+        coverImg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800",
+        tags: ["Design Systems", "Figma API", "Node.js", "CI/CD"],
+        fullDetails: `
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mb-3">SYNTHESIS Design Tokens</h2>
+          <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+            Eliminates visual drift between product design and engineering by automatically compiling design variables into automated GitHub pull requests.
+          </p>
+          <div class="w-full h-56 sm:h-72 rounded-2xl overflow-hidden my-4 border border-[var(--border-color)]">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover" />
+          </div>
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">Key Features:</h4>
+            <ul class="text-xs text-[var(--text-secondary)] space-y-1.5 list-disc pl-4">
+              <li>Automatic dark mode & high-contrast palette generations.</li>
+              <li>Zero-dependency TypeScript SDK export.</li>
+            </ul>
+          </div>
+        `
+      },
+      {
+        id: 3,
+        title: "AURA // Interactive 3D Product Configurator",
+        category: "Design",
+        shortDesc: "A WebGL-powered 3D asset customizer allowing customers to preview materials, lighting, and geometric variations in real-time.",
+        coverImg: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
+        tags: ["Three.js", "WebGL", "GLSL Shaders", "React"],
+        fullDetails: `
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mb-3">AURA 3D Configurator</h2>
+          <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+            Delivering photorealistic luxury product previews in mobile web browsers without requiring high GPU hardware overhead.
+          </p>
+          <div class="w-full h-56 sm:h-72 rounded-2xl overflow-hidden my-4 border border-[var(--border-color)]">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover" />
+          </div>
+        `
+      },
+      {
+        id: 4,
+        title: "NEXUS // Distributed Edge API Gateway",
+        category: "Systems",
+        shortDesc: "Ultra-low latency serverless edge gateway managing client routing, rate-limiting, and micro-caching across 280 global edge nodes.",
+        coverImg: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
+        tags: ["Cloudflare Workers", "Rust", "GraphQL", "Redis"],
+        fullDetails: `
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mb-3">NEXUS Edge Gateway</h2>
+          <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+            Provides sub-5ms routing decisions and JWT verification at the edge for large-scale microservice architectures.
+          </p>
+        `
+      },
+      {
+        id: 5,
+        title: "MONO // Technical Essay & Publication Web Engine",
+        category: "Web Apps",
+        shortDesc: "A content management and reading platform tailored for engineers, with live code snippet sandboxes and dark mode reader controls.",
+        coverImg: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800",
+        tags: ["Vue.js", "Markdown", "Tailwind", "Vercel"],
+        fullDetails: `
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mb-3">MONO Reader Platform</h2>
+          <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+            Designed to maximize long-form reading focus with crisp typography and zero layout shift.
+          </p>
+        `
+      },
+      {
+        id: 6,
+        title: "PULSE // Real-Time System Health Monitor",
+        category: "Systems",
+        shortDesc: "DevOps monitoring console displaying cluster metrics, server CPU/memory spikes, and automatic alert notifications.",
+        coverImg: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=800",
+        tags: ["React", "D3.js", "Node.js", "Docker"],
+        fullDetails: `
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading mb-3">PULSE Monitoring Suite</h2>
+          <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+            Interactive metrics dashboard built with D3.js vector rendering for infrastructure reliability teams.
+          </p>
+        `
+      }
+    ];
+
+    let activeCategory = 'All';
+
+    // Theme Management Logic
+    const htmlEl = document.documentElement;
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const themeText = document.getElementById('themeText');
+
+    function updateThemeUI(theme) {
+      if (theme === 'dark') {
+        htmlEl.setAttribute('data-theme', 'dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+        if (themeText) themeText.textContent = 'Light';
+      } else {
+        htmlEl.setAttribute('data-theme', 'light');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+        if (themeText) themeText.textContent = 'Dark';
+      }
+    }
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('portfolio_theme');
+      if (savedTheme) {
+        updateThemeUI(savedTheme);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        updateThemeUI(prefersDark ? 'dark' : 'light');
+      }
+    }
+
+    function toggleTheme() {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('portfolio_theme', newTheme);
+      updateThemeUI(newTheme);
+    }
+
+    // Projects Grid Rendering
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      grid.innerHTML = '';
+
+      const filtered = PROJECTS.filter(p => activeCategory === 'All' || p.category === activeCategory);
+
+      filtered.forEach(proj => {
+        const card = document.createElement('div');
+        card.className = 'ui-card-interactive rounded-2xl overflow-hidden flex flex-col justify-between group cursor-pointer';
+        card.onclick = () => openProjectModal(proj.id);
+
+        card.innerHTML = `
+          <div>
+            <div class="relative h-48 overflow-hidden bg-[var(--bg-muted)]">
+              <img 
+                src="${proj.coverImg}" 
+                alt="${proj.title}" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.onerror=null; this.src='https://placehold.co/800x600/18181b/ffffff?text=Project';"
+              />
+              <span class="absolute top-3 left-3 badge px-2.5 py-1 rounded-md">${proj.category}</span>
+            </div>
+            
+            <div class="p-5 space-y-2">
+              <h3 class="font-bold text-base font-heading leading-snug group-hover:underline">
+                ${proj.title}
+              </h3>
+              <p class="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-3">
+                ${proj.shortDesc}
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 pt-0 space-y-4">
+            <div class="flex flex-wrap gap-1.5">
+              ${proj.tags.map(t => `<span class="badge-subtle px-2 py-0.5 rounded text-[10px]">${t}</span>`).join('')}
+            </div>
+
+            <div class="flex items-center justify-between text-xs font-bold border-t border-[var(--border-color)] pt-3">
+              <span class="text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors">Explore Case Study</span>
+              <svg class="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transform group-hover:translate-x-1 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    // Projects Category Filtering
+    function filterProjects(cat) {
+      activeCategory = cat;
+      const buttons = document.querySelectorAll('.proj-filter-btn');
+      buttons.forEach(btn => {
+        if (btn.textContent.trim().toUpperCase() === cat.toUpperCase()) {
+          btn.className = 'proj-filter-btn active btn-primary px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider';
+        } else {
+          btn.className = 'proj-filter-btn btn-secondary px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider';
+        }
+      });
+      renderProjects();
+    }
+
+    // Project Modal Controls
+    function openProjectModal(id) {
+      const proj = PROJECTS.find(p => p.id === id);
+      if (!proj) return;
+
+      const modal = document.getElementById('projectModal');
+      const target = document.getElementById('modalTarget');
+      const catBadge = document.getElementById('modalCategory');
+
+      catBadge.textContent = proj.category;
+      target.innerHTML = proj.fullDetails;
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        const card = modal.querySelector('.ui-card');
+        if (card) {
+          card.classList.remove('scale-95');
+          card.classList.add('scale-100');
+        }
+      }, 10);
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      const card = modal.querySelector('.ui-card');
+      if (card) {
+        card.classList.remove('scale-100');
+        card.classList.add('scale-95');
+      }
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    // Resume Modal Controls
+    function openResumeModal() {
+      const modal = document.getElementById('resumeModal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
+    }
+
+    function closeResumeModal() {
+      const modal = document.getElementById('resumeModal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    // Mobile Drawer Navigation Toggle
+    function toggleMobileNav() {
+      const drawer = document.getElementById('mobileDrawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    // Clipboard Copy Helper
+    function copyToClipboard(text, msg) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast(msg);
+      } catch (e) {
+        console.error('Copy failed', e);
+      }
+      document.body.removeChild(textarea);
+    }
+
+    // Toast Notification Banner
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMessage');
+      if (!toast || !toastMsg) return;
+
+      toastMsg.textContent = message;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2800);
+    }
+
+    // Contact Form Submission Handler
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      showToast('Project inquiry sent successfully!');
+      e.target.reset();
+    }
+
+    // Init Logic on DOM Load
+    window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      renderProjects();
+    });
+  </script>
+</body>
+</html>

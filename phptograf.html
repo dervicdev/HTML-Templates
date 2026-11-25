@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LENS // Photography Studio & Visual Gallery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#080808',
+              white: '#ffffff',
+              dark: '#121212',
+              cardDark: '#181818',
+              cardLight: '#f4f4f5',
+              borderDark: '#27272a',
+              borderLight: '#e4e4e7',
+              muted: '#71717a'
+            }
+          },
+          fontFamily: {
+            mono: ['JetBrains Mono', 'Courier New', 'monospace'],
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-brand-white dark:bg-brand-black text-brand-black dark:text-brand-white transition-colors duration-200 min-h-screen flex flex-col justify-between antialiased">
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-40 bg-brand-white/90 dark:bg-brand-black/90 backdrop-blur-md border-b border-brand-borderLight dark:border-brand-borderDark px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-brand-black dark:bg-brand-white text-brand-white dark:text-brand-black flex items-center justify-center font-bold text-sm tracking-widest">
+          RAW
+        </div>
+        <span class="font-bold tracking-tight text-lg mono uppercase">LENS // STUDIO</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#gallery" class="hover:text-brand-muted transition-colors">Portfolio</a>
+        <a href="#calculator" class="hover:text-brand-muted transition-colors">Pricing</a>
+        <a href="#proofing" class="hover:text-brand-muted transition-colors">Client Vault</a>
+        <a href="#contact" class="hover:text-brand-muted transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="p-2 rounded-full border border-brand-borderLight dark:border-brand-borderDark hover:bg-brand-cardLight dark:hover:bg-brand-cardDark transition-colors">
+          <!-- Sun Icon -->
+          <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <!-- Moon Icon -->
+          <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <a href="#calculator" class="hidden sm:inline-block px-4 py-2 text-xs font-semibold uppercase tracking-wider bg-brand-black dark:bg-brand-white text-brand-white dark:text-brand-black rounded hover:opacity-90 transition-opacity">
+          Book Session
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 py-20 md:py-28 text-center md:text-left">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 text-xs mono uppercase border border-brand-borderLight dark:border-brand-borderDark rounded-full mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Available for Worldwide Commissions
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+          Capturing Raw Emotion & Architecture.
+        </h1>
+        <p class="text-brand-muted text-base md:text-lg mb-8 max-w-lg">
+          High-contrast editorial photography, architectural spatial studies, and minimalist portraits crafted with precision optics.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+          <a href="#gallery" class="px-6 py-3 text-sm font-semibold uppercase tracking-wider bg-brand-black dark:bg-brand-white text-brand-white dark:text-brand-black rounded hover:opacity-90 transition-opacity">
+            Explore Works
+          </a>
+          <a href="#calculator" class="px-6 py-3 text-sm font-semibold uppercase tracking-wider border border-brand-borderLight dark:border-brand-borderDark rounded hover:bg-brand-cardLight dark:hover:bg-brand-cardDark transition-colors">
+            Estimate Project
+          </a>
+        </div>
+      </div>
+      <div class="relative group">
+        <div class="aspect-[4/5] bg-brand-cardLight dark:bg-brand-cardDark rounded-lg overflow-hidden border border-brand-borderLight dark:border-brand-borderDark relative">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80" alt="Featured Portrait" class="w-full h-full object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500">
+          <div class="absolute bottom-4 left-4 right-4 bg-brand-white/90 dark:bg-brand-black/90 backdrop-blur p-4 rounded border border-brand-borderLight dark:border-brand-borderDark flex justify-between items-center text-xs mono">
+            <div>
+              <p class="font-bold">SERIES_01 // PORTRAIT</p>
+              <p class="text-brand-muted">35mm f/1.4 - 1/500s - ISO 100</p>
+            </div>
+            <span class="px-2 py-1 bg-brand-black dark:bg-brand-white text-brand-white dark:text-brand-black rounded text-[10px] font-bold">RAW</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="max-w-7xl mx-auto px-6 py-16 border-t border-brand-borderLight dark:border-brand-borderDark">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
+      <div>
+        <span class="text-xs mono uppercase text-brand-muted tracking-widest">// Portfolio Archive</span>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight mt-1">Selected Visual Works</h2>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div id="filterContainer" class="flex flex-wrap gap-2 text-xs mono">
+        <button data-filter="all" class="filter-btn px-4 py-2 rounded border border-brand-black dark:border-brand-white bg-brand-black dark:bg-brand-white text-brand-white dark:text-brand-black font-semibold">ALL</button>
+        <button data-filter="architecture" class="filter-btn px-4 py-2 rounded border border-brand-borderLight dark:border-brand-borderDark hover:bg-brand-cardLight dark:hover:bg-brand-cardDark">ARCHITECTURE</button>
+        <button data-filter="editorial" class="filter-btn px-4 py-2 rounded border border-brand-borderLight dark:border-brand-borderDark hover:bg-brand-cardLight dark:hover:bg-brand-cardDark">EDITORIAL</button>
+        <button data-filter="portrait" class="filter-btn px-4 py-2 rounded border border-brand-borderLight dark:border-brand-borderDark hover:bg-brand-cardLight dark:hover:bg-brand-cardDark">PORTRAIT</button>
+      </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div id="galleryGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Item 1 -->
+      <div class="gallery-item architecture group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80', 'Concrete Geometry', 'Architecture', 'f/8.0', '1/1000s', 'ISO 64', '24mm')">
+        <div class="aspect-[4/5] bg-brand-cardLight dark:bg-brand-cardDark rounded overflow-hidden border border-brand-borderLight dark:border-brand-borderDark relative">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Architecture" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-brand-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end text-brand-white">
+            <span class="text-xs mono uppercase tracking-widest text-brand-muted">Architecture</span>
+            <h3 class="font-bold text-lg">Concrete Geometry</h3>
+            <p class="text-xs mono text-zinc-300 mt-1">24mm • f/8.0 • 1/1000s • ISO 64</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="gallery-item portrait group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80', 'Studio Shadow Play', 'Portrait', 'f/1.4', '1/250s', 'ISO 100', '85mm')">
+        <div class="aspect-[4/5] bg-brand-cardLight dark:bg-brand-cardDark rounded overflow-hidden border border-brand-borderLight dark:border-brand-borderDark relative">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Portrait" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-brand-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end text-brand-white">
+            <span class="text-xs mono uppercase tracking-widest text-brand-muted">Portrait</span>
+            <h3 class="font-bold text-lg">Studio Shadow Play</h3>
+            <p class="text-xs mono text-zinc-300 mt-1">85mm • f/1.4 • 1/250s • ISO 100</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="gallery-item editorial group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1200&q=80', 'Monochrome Fashion', 'Editorial', 'f/2.8', '1/500s', 'ISO 200', '50mm')">
+        <div class="aspect-[4/5] bg-brand-cardLight dark:bg-brand-cardDark rounded overflow-hidden border border-brand-borderLight dark:border-brand-borderDark relative">
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80" alt="Editorial" class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-brand-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end text-brand-white">
+            <span class="text-xs mono uppercase tracking-widest text-brand-muted">Editorial</span>
+            <h3 class="font-bold text-lg">Monochrome Fashion</h3>
+            <p class="text-xs mono text-zinc-300 mt-1">50mm • f/2.8 • 1/500s • ISO 200</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Pricing Estimator Calculator -->
+  <section id="calculator" class="max-w-7xl mx-auto px-6 py-16 border-t border-brand-borderLight dark:border-brand-borderDark">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="text-xs mono uppercase text-brand-muted tracking-widest">// Instant Quote</span>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight mt-1">Interactive Session Calculator</h2>
+        <p class="text-brand-muted text-sm mt-2">Customize your photography package and estimate project scope instantly.</p>
+      </div>
+
+      <div class="bg-brand-cardLight dark:bg-brand-cardDark p-8 rounded-lg border border-brand-borderLight dark:border-brand-borderDark">
+        <div class="space-y-6">
+          <!-- Session Type -->
+          <div>
+            <label class="block text-xs mono uppercase font-bold mb-2">1. Select Shoot Type</label>
+            <div class="grid grid-cols-3 gap-3 text-xs mono">
+              <button onclick="updatePrice('type', 'portrait', 300)" class="type-btn p-3 rounded border text-center font-semibold bg-brand-black dark:bg-brand-white text-brand-white dark:text-brand-black border-brand-black dark:border-brand-white" data-type="portrait">PORTRAIT ($300)</button>
+              <button onclick="updatePrice('type', 'editorial', 500)" class="type-btn p-3 rounded border text-center hover:bg-brand-white dark:hover:bg-brand-black border-brand-borderLight dark:border-brand-borderDark" data-type="editorial">EDITORIAL ($500)</button>
+              <button onclick="updatePrice('type', 'architecture', 800)" class="type-btn p-3 rounded border text-center hover:bg-brand-white dark:hover:bg-brand-black border-brand-borderLight dark:border-brand-borderDark" data-type="architecture">COMMERCIAL ($800)</button>
+            </div>
+          </div>
+
+          <!-- Duration Slider -->
+          <div>
+            <div class="flex justify-between items-center mb-2 text-xs mono">
+              <label class="uppercase font-bold">2. Shooting Duration</label>
+              <span id="hoursVal" class="font-bold">2 Hours</span>
+            </div>
+            <input type="range" id="hoursSlider" min="1" max="8" value="2" oninput="calculateTotal()" class="w-full accent-brand-black dark:accent-brand-white">
+          </div>
+
+          <!-- Add-ons -->
+          <div>
+            <label class="block text-xs mono uppercase font-bold mb-2">3. Additional Services</label>
+            <div class="space-y-2 text-sm">
+              <label class="flex items-center gap-3 p-3 bg-brand-white dark:bg-brand-black rounded border border-brand-borderLight dark:border-brand-borderDark cursor-pointer">
+                <input type="checkbox" id="addonRetouch" onchange="calculateTotal()" class="accent-brand-black dark:accent-brand-white">
+                <span class="text-xs mono">High-End Beauty Retouching (+$150)</span>
+              </label>
+              <label class="flex items-center gap-3 p-3 bg-brand-white dark:bg-brand-black rounded border border-brand-borderLight dark:border-brand-borderDark cursor-pointer">
+                <input type="checkbox" id="addonExpress" onchange="calculateTotal()" class="accent-brand-black dark:accent-brand-white">
+                <span class="text-xs mono">24-Hour Express Turnaround (+$200)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Total Display -->
+          <div class="pt-6 border-t border-brand-borderLight dark:border-brand-borderDark flex justify-between items-center">
+            <div>
+              <span class="text-xs mono uppercase text-brand-muted">Estimated Investment</span>
+              <div id="totalDisplay" class="text-3xl font-extrabold mono">$500</div>
+            </div>
+            <button onclick="alert('Booking request initiated! Custom invoice sent to email.')" class="px-6 py-3 text-xs font-semibold uppercase tracking-wider bg-brand-black dark:bg-brand-white text-brand-white dark:text-brand-black rounded hover:opacity-90">
+              Submit Request
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Proofing Portal Simulator -->
+  <section id="proofing" class="max-w-7xl mx-auto px-6 py-16 border-t border-brand-borderLight dark:border-brand-borderDark">
+    <div class="max-w-xl mx-auto text-center">
+      <span class="text-xs mono uppercase text-brand-muted tracking-widest">// Client Access</span>
+      <h2 class="text-2xl font-bold tracking-tight mt-1 mb-3">Private Client Vault</h2>
+      <p class="text-brand-muted text-sm mb-6">Enter your session access key to view raw proofs and select finals.</p>
+
+      <form onsubmit="event.preventDefault(); alert('Access granted. Redirecting to private proofing gallery...');" class="flex gap-2">
+        <input type="password" placeholder="Passcode (e.g. RAW-2026-X)" required class="flex-1 px-4 py-3 bg-brand-cardLight dark:bg-brand-cardDark border border-brand-borderLight dark:border-brand-borderDark rounded text-sm mono focus:outline-none focus:border-brand-black dark:focus:border-brand-white">
+        <button type="submit" class="px-6 py-3 text-xs font-semibold uppercase tracking-wider bg-brand-black dark:bg-brand-white text-brand-white dark:text-brand-black rounded">
+          Unlock
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-brand-borderLight dark:border-brand-borderDark px-6 py-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs mono text-brand-muted">
+      <div>© 2026 LENS STUDIO // ALL RIGHTS RESERVED</div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:underline">INSTAGRAM</a>
+        <a href="#" class="hover:underline">BEHANCE</a>
+        <a href="#" class="hover:underline">UNSPLASH</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 z-50 bg-brand-black/95 backdrop-blur-md hidden flex items-center justify-center p-6">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-brand-white hover:text-brand-muted p-2">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+
+    <div class="max-w-5xl w-full grid md:grid-cols-3 gap-8 items-center">
+      <div class="md:col-span-2">
+        <img id="lbImage" src="" alt="Expanded View" class="w-full h-auto max-h-[80vh] object-contain rounded border border-brand-borderDark">
+      </div>
+      <div class="text-brand-white space-y-4 mono text-xs">
+        <div>
+          <span id="lbTag" class="px-2 py-1 bg-zinc-800 text-zinc-300 rounded">TAG</span>
+          <h3 id="lbTitle" class="text-xl font-bold mt-2 font-sans">Title</h3>
+        </div>
+        <div class="p-4 bg-brand-cardDark border border-brand-borderDark rounded space-y-2">
+          <p class="font-bold text-zinc-400">// EXIF METADATA</p>
+          <div class="flex justify-between"><span class="text-zinc-500">Aperture:</span><span id="lbAperture" class="font-bold">f/1.4</span></div>
+          <div class="flex justify-between"><span class="text-zinc-500">Shutter Speed:</span><span id="lbShutter" class="font-bold">1/500s</span></div>
+          <div class="flex justify-between"><span class="text-zinc-500">ISO Speed:</span><span id="lbIso" class="font-bold">ISO 100</span></div>
+          <div class="flex justify-between"><span class="text-zinc-500">Focal Length:</span><span id="lbFocal" class="font-bold">85mm</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Dark / Light Mode Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    // Gallery Filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-brand-black', 'dark:bg-brand-white', 'text-brand-white', 'dark:text-brand-black', 'font-semibold');
+          b.classList.add('border-brand-borderLight', 'dark:border-brand-borderDark');
+        });
+        btn.classList.add('bg-brand-black', 'dark:bg-brand-white', 'text-brand-white', 'dark:text-brand-black', 'font-semibold');
+
+        const filter = btn.getAttribute('data-filter');
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.classList.contains(filter)) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox Logic
+    function openLightbox(src, title, tag, aperture, shutter, iso, focal) {
+      document.getElementById('lbImage').src = src;
+      document.getElementById('lbTitle').innerText = title;
+      document.getElementById('lbTag').innerText = tag;
+      document.getElementById('lbAperture').innerText = aperture;
+      document.getElementById('lbShutter').innerText = shutter;
+      document.getElementById('lbIso').innerText = iso;
+      document.getElementById('lbFocal').innerText = focal;
+      document.getElementById('lightbox').classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+    }
+
+    // Pricing Calculator Logic
+    let basePrice = 300;
+    
+    function updatePrice(category, value, price) {
+      if (category === 'type') {
+        basePrice = price;
+        document.querySelectorAll('.type-btn').forEach(btn => {
+          btn.classList.remove('bg-brand-black', 'dark:bg-brand-white', 'text-brand-white', 'dark:text-brand-black');
+        });
+        document.querySelector(`[data-type="${value}"]`).classList.add('bg-brand-black', 'dark:bg-brand-white', 'text-brand-white', 'dark:text-brand-black');
+      }
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      const hours = parseInt(document.getElementById('hoursSlider').value);
+      document.getElementById('hoursVal').innerText = hours + (hours === 1 ? ' Hour' : ' Hours');
+      
+      let total = basePrice + ((hours - 1) * 100);
+      if (document.getElementById('addonRetouch').checked) total += 150;
+      if (document.getElementById('addonExpress').checked) total += 200;
+
+      document.getElementById('totalDisplay').innerText = '$' + total;
+    }
+  </script>
+</body>
+</html>
