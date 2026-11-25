@@ -1,6 +1,6 @@
 # HTML Template Collection
 
-> 10 production-ready, single-file HTML templates. Monochrome design system, dark/light mode, fully interactive vanilla JS — zero build step required.
+> 9 production-ready, single-file HTML templates. Monochrome design system, dark/light mode, fully interactive vanilla JS — zero build step required.
 
 **Demo Hub:** [https://dervicdev.github.io/html-templates/](https://dervicdev.github.io/html-templates/)
 
@@ -22,16 +22,15 @@ Or deploy to **GitHub Pages** in 3 clicks: `Settings → Pages → Branch: main 
 
 | # | Template | Category | Demo |
 |---|----------|----------|------|
-| 01 | CHANG-DEV Corporate | Business | [Demo](./chang-dev.html) |
-| 02 | Elemental Kids Academy | Business | [Demo](./childhood.html) |
-| 03 | DEV // Studio | Personal | [Demo](./developer-site.html) |
-| 04 | ALEX.DEV Brutalist Bio | Personal | [Demo](./lnikinbio.html) |
-| 05 | Alex Morgan Link Hub | Personal | [Demo](./modern-biolink.html) |
-| 06 | JOURNAL Blog Platform | Personal | [Demo](./modernbloger.html) |
-| 07 | VAULTSTORE E-Commerce | Commerce | [Demo](./onlinestori.html) |
-| 08 | LENS Photography Studio | Personal | [Demo](./phptograf.html) |
-| 09 | Alex Morgan Portfolio | Personal | [Demo](./portfolio-am.html) |
-| 10 | CODEVAULT Marketplace | Commerce | [Demo](./websitemarktplaz.html) |
+| 01 | Elemental Kids Academy | Business | [Demo](./childhood.html) |
+| 02 | DEV // Studio | Personal | [Demo](./developer-site.html) |
+| 03 | ALEX.DEV Brutalist Bio | Personal | [Demo](./lnikinbio.html) |
+| 04 | Alex Morgan Link Hub | Personal | [Demo](./modern-biolink.html) |
+| 05 | JOURNAL Blog Platform | Personal | [Demo](./modernbloger.html) |
+| 06 | VAULTSTORE E-Commerce | Commerce | [Demo](./onlinestori.html) |
+| 07 | LENS Photography Studio | Personal | [Demo](./phptograf.html) |
+| 08 | Alex Morgan Portfolio | Personal | [Demo](./portfolio-am.html) |
+| 09 | CODEVAULT Marketplace | Commerce | [Demo](./websitemarktplaz.html) |
 
 ### Featured demos
 
