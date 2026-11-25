@@ -2,7 +2,7 @@
 
 > 9 production-ready, single-file HTML templates. Monochrome design system, dark/light mode, fully interactive vanilla JS — zero build step required.
 
-**Demo Hub:** [https://dervicdev.github.io/html-templates/index.html](https://dervicdev.github.io/html-templates/)
+**Demo Hub:** [Live](https://dervicdev.github.io/html-templates/index.html)
 
 ---
 
